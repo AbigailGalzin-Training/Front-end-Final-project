@@ -1,0 +1,5 @@
+<<<<<<< Updated upstream
+*.sh text=auto
+=======
+*.* text=lf
+>>>>>>> Stashed changes

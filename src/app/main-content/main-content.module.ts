@@ -5,6 +5,7 @@ import { NavigationMusicComponent } from './navigation-music/navigation-music.co
 import { SideArtistComponent } from './side-artist/side-artist.component';
 import { AlbumContentComponent } from './album-content/album-content.component';
 import { MainContentComponent } from './main-content.component';
+import { CardArtistComponent } from './side-artist/card-artist/card-artist.component';
 
 @NgModule({
     declarations: [
@@ -12,7 +13,8 @@ import { MainContentComponent } from './main-content.component';
         HeaderMusicComponent,
         NavigationMusicComponent,
         SideArtistComponent,
-        AlbumContentComponent
+        AlbumContentComponent,
+        CardArtistComponent
     ],
     imports: [CommonModule],
     exports: [

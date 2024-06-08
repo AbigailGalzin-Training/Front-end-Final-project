@@ -8,9 +8,9 @@ import { ArtistService } from 'src/app/core/services/artist/artist.service';
     styleUrls: ['./side-artist.component.sass'],
 })
 export class SideArtistComponent {
-    constructor(private artistService: ArtistService) {}
+    constructor(private artistService: ArtistService) { }
     public artists: Artist[] = [];
     ngOnInit(): void {
         this.artists = this.artistService.getArtists();
-      }
+    }
 }

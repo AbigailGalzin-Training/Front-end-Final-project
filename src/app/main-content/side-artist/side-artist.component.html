@@ -1,1 +1,3 @@
-<p>side-artist works!</p>
+<div class="sidebar">
+    <app-card-artist *ngFor="let artist of artists" [nameArtist]="artist.name" [linkPhoto]="artist.photo"></app-card-artist>
+</div>

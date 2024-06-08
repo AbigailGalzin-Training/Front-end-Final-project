@@ -20,5 +20,4 @@ import { MainContentComponent } from './main-content.component';
     ]
 })
 export class MainContentModule {
-    static forChild: any;
 }

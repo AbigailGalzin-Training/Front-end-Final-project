@@ -6,6 +6,8 @@ import { SideArtistComponent } from './side-artist/side-artist.component';
 import { AlbumContentComponent } from './album-content/album-content.component';
 import { MainContentComponent } from './main-content.component';
 import { CardArtistComponent } from './side-artist/card-artist/card-artist.component';
+import { CreateModalComponent } from './navigation-music/create-modal/create-modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
     declarations: [
@@ -14,9 +16,12 @@ import { CardArtistComponent } from './side-artist/card-artist/card-artist.compo
         NavigationMusicComponent,
         SideArtistComponent,
         AlbumContentComponent,
-        CardArtistComponent
+        CardArtistComponent,
+        CreateModalComponent
     ],
-    imports: [CommonModule],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule],
     exports: [
         MainContentComponent
     ]

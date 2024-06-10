@@ -5,4 +5,19 @@ import { Component } from '@angular/core';
     templateUrl: './navigation-music.component.html',
     styleUrls: ['./navigation-music.component.sass'],
 })
-export class NavigationMusicComponent {}
+export class NavigationMusicComponent {
+    isCreateModalOpen = false;
+
+    openCreateModal() {
+      this.isCreateModalOpen = true;
+    }
+  
+    closeCreateModal() {
+      this.isCreateModalOpen = false;
+    }
+  
+    onSave(data: any) {
+      console.log('saved data:', data);
+      this.closeCreateModal();
+    }
+}

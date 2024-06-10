@@ -1,0 +1,15 @@
+<div class="modal">
+    <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+      <label>
+        Campo 1:
+        <input formControlName="field1" type="text">
+      </label>
+      <label>
+        Campo 2:
+        <input formControlName="field2" type="text">
+      </label>
+      <button type="submit" [disabled]="!createForm.valid">Guardar</button>
+      <button type="button" (click)="onCancel()">Cancelar</button>
+    </form>
+  </div>
+  

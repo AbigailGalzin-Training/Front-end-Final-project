@@ -22,5 +22,4 @@ import { CardArtistComponent } from './side-artist/card-artist/card-artist.compo
     ]
 })
 export class MainContentModule {
-    static forChild: any;
 }

@@ -9,6 +9,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { musicReducer } from 'src/reducers/music.reducer';
 import { artistReducer } from 'src/reducers/artist.reducer';
 import { albumReducer } from '../reducers/albums.reducer';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [AppComponent],
@@ -23,6 +24,7 @@ import { albumReducer } from '../reducers/albums.reducer';
         }),
         EffectsModule.forRoot([]),
         StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+        BrowserAnimationsModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

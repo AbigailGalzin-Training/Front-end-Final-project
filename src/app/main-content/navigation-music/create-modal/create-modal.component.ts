@@ -14,8 +14,12 @@ export class CreateModalComponent {
 
   constructor(private fb: FormBuilder) {
     this.createForm = this.fb.group({
-      field1: ['', Validators.required],
-      field2: ['', Validators.required]
+      artistName: ['', Validators.required],
+      musicGenres: ['', Validators.required],
+      integrants: ['', Validators.required],
+      website: ['', Validators.required],
+      image: ['', Validators.required]
+
     });
   }
 

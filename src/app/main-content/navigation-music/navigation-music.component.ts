@@ -9,15 +9,21 @@ export class NavigationMusicComponent {
     isCreateModalOpen = false;
 
     openCreateModal() {
-      this.isCreateModalOpen = true;
+        this.isCreateModalOpen = true;
     }
-  
+
     closeCreateModal() {
-      this.isCreateModalOpen = false;
+        this.isCreateModalOpen = false;
     }
-  
+
     onSave(data: any) {
-      console.log('saved data:', data);
-      this.closeCreateModal();
+        const storedData = JSON.parse(
+            localStorage.getItem('musicData') || '[]',
+        );
+        storedData.push(data);
+        localStorage.setItem('musicData', JSON.stringify(storedData));
+
+        console.log('Datos guardados:', storedData);
+        this.closeCreateModal();
     }
 }

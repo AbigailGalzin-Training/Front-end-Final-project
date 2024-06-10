@@ -1,8 +1,15 @@
 import { Component } from '@angular/core';
+import { Album } from 'src/app/core/models/album.model';
 
 @Component({
     selector: 'app-album-content',
     templateUrl: './album-content.component.html',
     styleUrls: ['./album-content.component.sass'],
 })
-export class AlbumContentComponent {}
+export class AlbumContentComponent {
+
+
+
+
+
+}

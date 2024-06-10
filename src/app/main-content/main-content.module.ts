@@ -6,6 +6,8 @@ import { SideArtistComponent } from './side-artist/side-artist.component';
 import { AlbumContentComponent } from './album-content/album-content.component';
 import { MainContentComponent } from './main-content.component';
 import { CardArtistComponent } from './side-artist/card-artist/card-artist.component';
+import { AlbumCardComponent } from './album-content/album-card/album-card.component';
+import { AlbumsByArtistComponent } from './album-content/albums-by-artist/albums-by-artist.component';
 
 @NgModule({
     declarations: [
@@ -14,7 +16,9 @@ import { CardArtistComponent } from './side-artist/card-artist/card-artist.compo
         NavigationMusicComponent,
         SideArtistComponent,
         AlbumContentComponent,
-        CardArtistComponent
+        CardArtistComponent,
+        AlbumCardComponent,
+        AlbumsByArtistComponent,
     ],
     imports: [CommonModule],
     exports: [

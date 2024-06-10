@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ArtistService } from '../../core/services/artist/artist.service';
 
 @Component({
     selector: 'app-navigation-music',
@@ -7,6 +8,8 @@ import { Component } from '@angular/core';
 })
 export class NavigationMusicComponent {
     isCreateModalOpen = false;
+
+    constructor(private artistService: ArtistService) {}
 
     openCreateModal() {
         this.isCreateModalOpen = true;
@@ -17,13 +20,7 @@ export class NavigationMusicComponent {
     }
 
     onSave(data: any) {
-        const storedData = JSON.parse(
-            localStorage.getItem('musicData') || '[]',
-        );
-        storedData.push(data);
-        localStorage.setItem('musicData', JSON.stringify(storedData));
-
-        console.log('Datos guardados:', storedData);
+        this.artistService.create(data);
         this.closeCreateModal();
     }
 }

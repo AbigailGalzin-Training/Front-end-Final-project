@@ -13,10 +13,17 @@ export class ArtistService {
         { id: 4, name: 'Artist Four', photo: 'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1666955170588-Ariana-Grande-wa_59e11327.jpeg' },
         { id: 5, name: 'Artist Five', photo: 'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1672929736271-Selena_Gomez.jpg' },
     ];
+    private storageKey = 'artistData';
 
     constructor() { }
 
     public getArtists(): Artist[] {
         return this.artists;
+    }
+
+    create(data: any): void {
+        const storedData = JSON.parse(localStorage.getItem(this.storageKey) || '[]');
+        storedData.push(data);
+        localStorage.setItem(this.storageKey, JSON.stringify(storedData));
     }
 }

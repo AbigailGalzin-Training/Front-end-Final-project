@@ -1,11 +1,19 @@
 <div class="navigation-music">
     <nav class="navbar">
         <div class="sections">
-            <button>Playlist</button>
-            <button>Songs</button>
+            <button button class="nav-button">Albums</button>
+            <button button class="nav-button">Songs</button>
         </div>
         <div class="navbar-action">
-            <button>+</button>
+            <button class="nav-button" [matMenuTriggerFor]="menu">+</button>
+            <mat-menu #menu="matMenu">
+                <button (click)="openCreateModal()" mat-menu-item>Crear artista</button>
+                <button (click)="openCreateModal()" mat-menu-item>Crear cancion</button>
+                <button (click)="openCreateModal()" mat-menu-item>Crear album</button>
+            </mat-menu>
         </div>
     </nav>
 </div>
+
+<app-create-modal *ngIf="isCreateModalOpen" (close)="closeCreateModal()" (save)="onSave($event)">
+</app-create-modal>

@@ -6,6 +6,11 @@ import { SideArtistComponent } from './side-artist/side-artist.component';
 import { AlbumContentComponent } from './album-content/album-content.component';
 import { MainContentComponent } from './main-content.component';
 import { CardArtistComponent } from './side-artist/card-artist/card-artist.component';
+import { CreateModalComponent } from './navigation-music/create-modal/create-modal.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatButtonModule} from '@angular/material/button';
+
 
 @NgModule({
     declarations: [
@@ -14,9 +19,15 @@ import { CardArtistComponent } from './side-artist/card-artist/card-artist.compo
         NavigationMusicComponent,
         SideArtistComponent,
         AlbumContentComponent,
-        CardArtistComponent
+        CardArtistComponent,
+        CreateModalComponent
     ],
-    imports: [CommonModule],
+    imports: [
+        CommonModule,
+        ReactiveFormsModule,
+        MatButtonModule,
+        MatMenuModule
+    ],
     exports: [
         MainContentComponent
     ]

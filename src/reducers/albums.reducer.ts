@@ -47,5 +47,5 @@ export const initialAlbumState: Album[] = [
 
 export const albumReducer = createReducer(
     initialAlbumState,
-    on(add, (state, { albums }) => [...state, albums]),
+    on(add, (state, { albums }) => [...state, albums])
 );

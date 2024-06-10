@@ -17,8 +17,8 @@ import { albumReducer } from '../reducers/albums.reducer';
         AppRoutingModule,
         MainContentModule,
         StoreModule.forRoot({
-            artist: artistReducer,
-            album: albumReducer,
+            artists: artistReducer,
+            albums: albumReducer,
             music: musicReducer,
         }),
         EffectsModule.forRoot([]),

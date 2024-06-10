@@ -108,4 +108,4 @@ export const initialMusicState: Music[] = [
 export const musicReducer = createReducer(
     initialMusicState,
     on(add, (state, { music }) => [...state, music])
-  );
+);

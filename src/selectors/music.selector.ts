@@ -3,7 +3,7 @@ import { AppState } from 'src/app/model/appstate.model';
 
 export const selectAppState = createFeatureSelector<AppState>('music');
 
-export const music = createSelector(
+export const selectAllMusic = createSelector(
     selectAppState,
     (state: AppState) => state.music,
 );

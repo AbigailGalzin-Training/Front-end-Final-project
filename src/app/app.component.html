@@ -1,3 +1,42 @@
 <router-outlet></router-outlet>
 <app-main-content></app-main-content>
-https://drive.google.com/file/d/1JFfy90ZNAk0NDvchgpdU7nJYtND9-chb/view?usp=sharing
+<div>
+    <h2>Artists</h2>
+    <div *ngIf="artists | async as artists; else loading">
+      <div *ngFor="let artist of artists">
+        <h3>{{ artist.name }}</h3>
+        <p>{{ artist.genre.join(', ') }}</p>
+        <p>{{ artist.members.join(', ') }}</p>
+        <a [href]="artist.webSite">{{ artist.webSite }}</a>
+        <img [src]="artist.imagePath" alt="{{ artist.name }}" />
+      </div>
+    </div>
+  </div>
+  
+  <div>
+    <h2>Albums</h2>
+    <div *ngIf="albums | async as albums; else loading">
+      <div *ngFor="let album of albums">
+        <h3>{{ album.title }}</h3>
+        <p>{{ album.genre }}</p>
+        <p>{{ album.releaseYear | date }}</p>
+        <img [src]="album.imagePath" alt="{{ album.title }}" />
+      </div>
+    </div>
+  </div>
+  
+  <div>
+    <h2>Music</h2>
+    <div *ngIf="music | async as music; else loading">
+      <div *ngFor="let song of music">
+        <h3>{{ song.title }}</h3>
+        <p>{{ song.genre }}</p>
+        <p>{{ song.releaseDate }}</p>
+        <audio [src]="song.songPath" controls></audio>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #loading>
+    <p>Loading...</p>
+  </ng-template>

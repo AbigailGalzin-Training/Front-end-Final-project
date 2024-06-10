@@ -3,7 +3,7 @@
       <span>{{genre}}</span>
     </mat-toolbar>
     <div class="media-info">
-      <span>{{artistName}}- {{songName}}</span>
+      <span>{{ (displayerData | async )?[genre]: "not" }}- {{songName}}</span>
     </div>
     <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
   </div>

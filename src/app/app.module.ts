@@ -17,7 +17,7 @@ import { albumReducer } from '../reducers/albums.reducer';
         BrowserModule,
         AppRoutingModule,
         MainContentModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
         StoreModule.forRoot({
             artist: artistReducer,
             album: albumReducer,

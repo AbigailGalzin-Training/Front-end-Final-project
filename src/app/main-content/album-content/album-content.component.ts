@@ -7,9 +7,5 @@ import { Album } from '../../models/album.model';
     styleUrls: ['./album-content.component.sass'],
 })
 export class AlbumContentComponent {
-
-
-
-
-
+    
 }

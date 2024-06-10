@@ -1,10 +1,13 @@
-<p class="artist-name">{{artist.name}}</p>
-<div class="albums-container">
-    <!-- placeholder -->
-    <app-album-card *ngFor="let album of albums" 
-    [title]="album.title"
-    [releaseDate]="album.releaseDate"
-    [genre]="album.genre"
-    [photo]="album.photo"
-    ></app-album-card>
+<div class="aux">
+    <p class="artist-name">{{ artist.name }}</p>
+    <div class="albums-container">
+        <!-- placeholder -->
+        <app-album-card
+            *ngFor="let album of albums"
+            [title]="album.title"
+            [releaseDate]="album.releaseDate"
+            [genre]="album.genre"
+            [photo]="album.photo"
+        ></app-album-card>
+    </div>
 </div>

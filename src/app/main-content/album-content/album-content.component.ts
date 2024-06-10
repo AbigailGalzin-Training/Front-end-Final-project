@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Album } from 'src/app/core/models/album.model';
+import { Album } from '../../models/album.model';
 
 @Component({
     selector: 'app-album-content',

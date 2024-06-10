@@ -26,5 +26,4 @@ import { AlbumsByArtistComponent } from './album-content/albums-by-artist/albums
     ]
 })
 export class MainContentModule {
-    static forChild: any;
 }

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Artist } from 'src/app/core/models/artist.model';
-import { ArtistService } from 'src/app/core/services/artist/artist.service';
+import { Artist } from '../../models/artist.model';
+import { ArtistService } from '../../core/services/artist/artist.service';
 
 @Component({
     selector: 'app-side-artist',

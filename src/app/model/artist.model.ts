@@ -1,11 +1,11 @@
+import { Album } from './album';
 import { Music } from './music.model';
 
 export interface Artist {
-    id: number;
     name: string;
     genre: string[];
     members: string[];
     webSite: string;
+    albums: Album[];
     imagePath: string;
-    music: number[];
 }

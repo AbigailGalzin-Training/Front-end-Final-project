@@ -1,10 +1,10 @@
 import { Artist } from './artist.model';
-import { Music } from './music.model';
+import { Song } from './song.model';
 
 export interface Album {
     title: string;
     genre: string;
     releaseYear: Date;
     imagePath: string;
-    songs: Music[];
+    songs: Song[];
 }

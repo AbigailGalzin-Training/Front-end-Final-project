@@ -1,5 +1,4 @@
 import { Album } from './album';
-import { Music } from './music.model';
 
 export interface Artist {
     name: string;

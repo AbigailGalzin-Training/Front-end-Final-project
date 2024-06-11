@@ -1,7 +1,7 @@
 import { Album } from './album';
 import { Artist } from './artist.model';
 
-export interface Music {
+export interface Song {
     title: string;
     genre: string;
     releaseDate: string;

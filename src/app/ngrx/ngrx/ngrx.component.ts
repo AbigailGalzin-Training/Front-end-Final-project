@@ -3,7 +3,6 @@ import { Observable } from 'rxjs';
 import { Artist } from '../../model/artist.model';
 import { AppState } from '../../model/appstate.model';
 import { Album } from '../../model/album';
-import { Music } from '../../model/music.model';
 import { Store } from '@ngrx/store';
 import {
     selectAlbum,
@@ -12,6 +11,7 @@ import {
     selectAllSongs,
     selectSong,
 } from '../app.selector';
+import { Song } from 'src/app/model/song.model';
 
 @Component({
     selector: 'app-ngrx',
@@ -21,9 +21,9 @@ import {
 export class NgrxComponent {
     artists: Observable<Artist[]>;
     albums: Observable<Album[] | undefined>;
-    songs: Observable<Music[] | undefined>;
+    songs: Observable<Song[] | undefined>;
     album: Observable<Album | undefined>;
-    song: Observable<Music | undefined>;
+    song: Observable<Song | undefined>;
 
     constructor(private readonly store: Store<AppState>) {
         this.artists = this.store.select(selectAllArtists);

@@ -1,8 +1,8 @@
 import { Artist } from 'src/app/model/artist.model';
 import { Album } from '../model/album';
-import { Music } from '../model/music.model';
 import { AppState } from '../model/appstate.model';
 import { createAction, props } from '@ngrx/store';
+import { Song } from '../model/song.model';
 
 export const addInitialData = createAction(
     '[App] Add Initial Data',
@@ -19,5 +19,5 @@ export const addAlbum = createAction(
 );
 export const addSong = createAction(
     '[Song] Add Song',
-    props<{ artistName: string; albumTitle: string; song: Music }>(),
+    props<{ artistName: string; albumTitle: string; song: Song }>(),
 );

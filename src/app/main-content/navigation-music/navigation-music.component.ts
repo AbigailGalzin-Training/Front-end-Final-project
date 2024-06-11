@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { CreateModalComponent } from './create-modal/create-modal.component';
 import { MatDialog } from '@angular/material/dialog';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-navigation-music',
@@ -8,30 +9,17 @@ import { MatDialog } from '@angular/material/dialog';
     styleUrls: ['./navigation-music.component.sass'],
 })
 export class NavigationMusicComponent {
-    isCreateModalOpen = false;
+    constructor(public dialog: MatDialog, private router: Router) { }
 
-    /* openCreateModal() {
-        this.isCreateModalOpen = true;
-    } */
-    constructor(public dialog: MatDialog) {}
+    openCreateModal(type: string): void {
+        const dialogRef = this.dialog.open(CreateModalComponent);
 
-    openCreateModal(): void {
-        const dialogRef = this.dialog.open(CreateModalComponent,
-            {data: { name: 'User', favoriteAnimal: '' }}
-        );
+        dialogRef.afterOpened().subscribe(() => {
+            this.router.navigate([type]);
+        });
 
         dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed');
-            let data = result;
+            this.router.navigate(['']);
         });
-    }
-
-    closeCreateModal() {
-        this.isCreateModalOpen = false;
-    }
-
-    onSave(data: any) {
-        console.log('saved data:', data);
-        this.closeCreateModal();
     }
 }

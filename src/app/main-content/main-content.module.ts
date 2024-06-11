@@ -12,9 +12,12 @@ import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatDialogModule } from '@angular/material/dialog';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { CreateAlbumComponent } from './navigation-music/create-album/create-album.component';
+import { CreateArtistComponent } from './navigation-music/create-artist/create-artist.component';
+import { CreateSongComponent } from './navigation-music/create-song/create-song.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
     declarations: [
@@ -24,7 +27,10 @@ import { MatInputModule } from '@angular/material/input';
         SideArtistComponent,
         AlbumContentComponent,
         CardArtistComponent,
-        CreateModalComponent
+        CreateModalComponent,
+        CreateAlbumComponent,
+        CreateArtistComponent,
+        CreateSongComponent
     ],
     imports: [
         CommonModule,
@@ -35,7 +41,8 @@ import { MatInputModule } from '@angular/material/input';
         FormsModule,
         MatDialogModule,
         MatFormFieldModule,
-        MatInputModule
+        MatInputModule,
+        RouterModule
     ],
     exports: [
         MainContentComponent

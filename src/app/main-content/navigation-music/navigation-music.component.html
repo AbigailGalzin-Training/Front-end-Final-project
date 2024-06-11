@@ -7,11 +7,10 @@
         <div class="navbar-action">
             <button class="nav-button" [matMenuTriggerFor]="menu">+</button>
             <mat-menu #menu="matMenu">
-                <button (click)="openCreateModal()" mat-menu-item>Crear artista</button>
-                <button (click)="openCreateModal()" mat-menu-item>Crear cancion</button>
-                <button (click)="openCreateModal()" mat-menu-item>Crear album</button>
+                <button (click)="openCreateModal('artist')" mat-menu-item>Crear artista</button>
+                <button (click)="openCreateModal('song')" mat-menu-item>Crear cancion</button>
+                <button (click)="openCreateModal('album')" mat-menu-item>Crear album</button>
             </mat-menu>
-
         </div>
     </nav>
 </div>

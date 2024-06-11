@@ -8,8 +8,8 @@ import { MainContentComponent } from './main-content.component';
 import { CardArtistComponent } from './side-artist/card-artist/card-artist.component';
 import { CreateModalComponent } from './navigation-music/create-modal/create-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatButtonModule} from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -18,6 +18,8 @@ import { CreateAlbumComponent } from './navigation-music/create-album/create-alb
 import { CreateArtistComponent } from './navigation-music/create-artist/create-artist.component';
 import { CreateSongComponent } from './navigation-music/create-song/create-song.component';
 import { RouterModule } from '@angular/router';
+import { AlbumCardComponent } from './album-content/album-card/album-card.component';
+import { AlbumsByArtistComponent } from './album-content/albums-by-artist/albums-by-artist.component';
 
 @NgModule({
     declarations: [
@@ -30,7 +32,9 @@ import { RouterModule } from '@angular/router';
         CreateModalComponent,
         CreateAlbumComponent,
         CreateArtistComponent,
-        CreateSongComponent
+        CreateSongComponent,
+        AlbumCardComponent,
+        AlbumsByArtistComponent,
     ],
     imports: [
         CommonModule,
@@ -42,11 +46,8 @@ import { RouterModule } from '@angular/router';
         MatDialogModule,
         MatFormFieldModule,
         MatInputModule,
-        RouterModule
+        RouterModule,
     ],
-    exports: [
-        MainContentComponent
-    ]
+    exports: [MainContentComponent],
 })
-export class MainContentModule {
-}
+export class MainContentModule {}

@@ -12,7 +12,7 @@ import { MainContentModule } from './main-content/main-content.module';
         BrowserAnimationsModule,
         AppRoutingModule,
         MainContentModule,
-        BrowserAnimationsModule
+        BrowserAnimationsModule,
     ],
     providers: [],
     bootstrap: [AppComponent],

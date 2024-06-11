@@ -8,8 +8,8 @@ import { MainContentComponent } from './main-content.component';
 import { CardArtistComponent } from './side-artist/card-artist/card-artist.component';
 import { CreateModalComponent } from './navigation-music/create-modal/create-modal.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import {MatMenuModule} from '@angular/material/menu';
-import {MatButtonModule} from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatButtonModule } from '@angular/material/button';
 import { BrowserModule } from '@angular/platform-browser';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
@@ -34,7 +34,7 @@ import { AlbumsByArtistComponent } from './album-content/albums-by-artist/albums
         CreateArtistComponent,
         CreateSongComponent,
         AlbumCardComponent,
-        AlbumsByArtistComponent
+        AlbumsByArtistComponent,
     ],
     imports: [
         CommonModule,
@@ -46,11 +46,8 @@ import { AlbumsByArtistComponent } from './album-content/albums-by-artist/albums
         MatDialogModule,
         MatFormFieldModule,
         MatInputModule,
-        RouterModule
+        RouterModule,
     ],
-    exports: [
-        MainContentComponent
-    ]
+    exports: [MainContentComponent],
 })
-export class MainContentModule {
-}
+export class MainContentModule {}

@@ -6,6 +6,4 @@ import { Album } from '../../models/album.model';
     templateUrl: './album-content.component.html',
     styleUrls: ['./album-content.component.sass'],
 })
-export class AlbumContentComponent {
-    
-}
+export class AlbumContentComponent {}

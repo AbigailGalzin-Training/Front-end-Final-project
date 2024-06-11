@@ -8,11 +8,10 @@ import { Artist } from '../../../models/artist.model';
     styleUrls: ['./albums-by-artist.component.sass'],
 })
 export class AlbumsByArtistComponent {
-
     public artist: Artist = {
         id: 1,
-        "name": "Artist A",
-        "photo": "Photo artist A"
+        name: 'Artist A',
+        photo: 'Photo artist A',
     };
     public albums: Album[] = [
         {
@@ -37,5 +36,4 @@ export class AlbumsByArtistComponent {
             photo: 'https://media.istockphoto.com/id/1509576974/es/foto/letra-c-hecha-de-%C3%A1baco-sobre-fondo-blanco.jpg?s=2048x2048&w=is&k=20&c=TCRlJUgCXIsjj5V_Pr-WKfmYJCnZ0sNiFZso0hknX5M=',
         },
     ];
-    
 }

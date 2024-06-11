@@ -1,11 +1,22 @@
 <div class="navigation-music">
     <nav class="navbar">
         <div class="sections">
-            <button>Playlist</button>
-            <button>Songs</button>
+            <button button class="nav-button">Albums</button>
+            <button button class="nav-button">Songs</button>
         </div>
         <div class="navbar-action">
-            <button>+</button>
+            <button class="nav-button" [matMenuTriggerFor]="menu">+</button>
+            <mat-menu #menu="matMenu">
+                <button (click)="openCreateModal('artist')" mat-menu-item>
+                    Create artist
+                </button>
+                <button (click)="openCreateModal('song')" mat-menu-item>
+                    Create song
+                </button>
+                <button (click)="openCreateModal('album')" mat-menu-item>
+                    Create album
+                </button>
+            </mat-menu>
         </div>
     </nav>
 </div>

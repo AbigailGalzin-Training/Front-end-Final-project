@@ -20,19 +20,19 @@ import {
 })
 export class NgrxComponent {
     artists: Observable<Artist[]>;
-    Allalbums: Observable<Album[] | undefined>;
-    Allmusic: Observable<Music[] | undefined>;
+    albums: Observable<Album[] | undefined>;
+    songs: Observable<Music[] | undefined>;
     album: Observable<Album | undefined>;
-    music: Observable<Music | undefined>;
+    song: Observable<Music | undefined>;
 
     constructor(private readonly store: Store<AppState>) {
         this.artists = this.store.select(selectAllArtists);
-        this.Allalbums = this.store.select(selectAllAlbums('Coldplay'));
-        this.Allmusic = this.store.select(
+        this.albums = this.store.select(selectAllAlbums('Coldplay'));
+        this.songs = this.store.select(
             selectAllSongs('Coldplay', 'Parachutes'),
         );
         this.album = this.store.select(selectAlbum('Coldplay', 'Parachutes'));
-        this.music = this.store.select(
+        this.song = this.store.select(
             selectSong('Coldplay', 'Parachutes', 'Yellow'),
         );
     }

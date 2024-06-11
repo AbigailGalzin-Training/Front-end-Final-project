@@ -9,14 +9,14 @@
 <div class="allAlbums"></div>
     <h2>All Albums</h2>
     <ul>
-        <li *ngFor="let album of Allalbums | async">
+        <li *ngFor="let album of albums | async">
           {{ album.title }}
         </li>
     </ul>
 <div class="allSongs"></div>
     <h2>All Songs</h2>
     <ul>
-        <li *ngFor="let music of Allmusic | async">
+        <li *ngFor="let music of songs | async">
           {{ music.title }}
         </li>
     </ul>
@@ -24,5 +24,5 @@
     {{ (album | async)?.title || 'No album found' }}
 </div>
 <div class="song">
-    {{ (music | async)?.title || 'No song found' }}
+    {{ (song | async)?.title || 'No song found' }}
 </div>

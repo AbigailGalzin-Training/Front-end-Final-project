@@ -6,5 +6,4 @@ export interface Album {
     genre: string;
     releaseDate: string;
     photo: string;
-    // songs: Song[];
 }

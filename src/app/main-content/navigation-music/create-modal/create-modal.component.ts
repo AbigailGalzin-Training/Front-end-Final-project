@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
     MatDialog,
@@ -16,25 +16,32 @@ import {
     styleUrls: ['./create-modal.component.sass'],
 })
 export class CreateModalComponent {
-    createForm: FormGroup;
+    //createForm: FormGroup;
+    input: undefined;
+
 
     @Output() close = new EventEmitter<void>();
     @Output() save = new EventEmitter<any>();
 
-    constructor(private fb: FormBuilder) {
+/*     constructor(private fb: FormBuilder) {
         this.createForm = this.fb.group({
             field1: ['', Validators.required],
             field2: ['', Validators.required],
         });
-    }
+    } */
 
-    onSubmit() {
+    constructor(
+        public dialogRef: MatDialogRef<CreateModalComponent>,
+        @Inject(MAT_DIALOG_DATA) public data: any,
+    ) { }
+
+/*     onSubmit() {
         if (this.createForm.valid) {
             this.save.emit(this.createForm.value);
         }
-    }
+    } */
 
     onCancel() {
-        this.close.emit();
+        this.dialogRef.close();
     }
 }

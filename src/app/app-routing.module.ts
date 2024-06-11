@@ -4,7 +4,7 @@ import { AlbumContentComponent } from './main-content/album-content/album-conten
 import { MainContentComponent } from './main-content/main-content.component';
 
 const routes: Routes = [
-    {
+/*     {
         path: 'albums', component: AlbumContentComponent
     },
     {
@@ -12,7 +12,7 @@ const routes: Routes = [
     },
     {
         path: '', component: MainContentComponent
-    }
+    } */
 ];
 
 @NgModule({

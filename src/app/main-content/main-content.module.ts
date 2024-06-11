@@ -7,10 +7,14 @@ import { AlbumContentComponent } from './album-content/album-content.component';
 import { MainContentComponent } from './main-content.component';
 import { CardArtistComponent } from './side-artist/card-artist/card-artist.component';
 import { CreateModalComponent } from './navigation-music/create-modal/create-modal.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonModule} from '@angular/material/button';
-
+import { BrowserModule } from '@angular/platform-browser';
+import { MatDialogModule } from '@angular/material/dialog';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
 
 @NgModule({
     declarations: [
@@ -26,7 +30,12 @@ import {MatButtonModule} from '@angular/material/button';
         CommonModule,
         ReactiveFormsModule,
         MatButtonModule,
-        MatMenuModule
+        MatMenuModule,
+        BrowserModule,
+        FormsModule,
+        MatDialogModule,
+        MatFormFieldModule,
+        MatInputModule
     ],
     exports: [
         MainContentComponent

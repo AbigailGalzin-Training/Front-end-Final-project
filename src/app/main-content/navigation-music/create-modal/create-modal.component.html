@@ -1,4 +1,4 @@
-<div class="modal">
+<!-- <div class="modal">
     <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
         <label>
             Campo 1:
@@ -11,4 +11,16 @@
         <button type="submit" [disabled]="!createForm.valid">Guardar</button>
         <button type="button" (click)="onCancel()">Cancelar</button>
     </form>
+</div> -->
+<h1 mat-dialog-title>Hi {{ data.name }}</h1>
+<div mat-dialog-content>
+    <p>What's your favorite animal?</p>
+    <mat-form-field appearance="fill">
+        <label>Favorite Animal</label>
+        <input matInput [(ngModel)]="data.favoriteAnimal">
+    </mat-form-field>
+</div>
+<div mat-dialog-actions>
+    <button mat-button (click)="onCancel()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="data" cdkFocusInitial>Ok</button>
 </div>

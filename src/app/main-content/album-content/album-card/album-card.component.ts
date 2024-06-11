@@ -11,8 +11,4 @@ export class AlbumCardComponent {
   @Input() releaseDate: string | null;
   @Input() genre: string | null;
   @Input() photo: string | null;
-  // @Input() duration: string | null;
-  // @Input() songs: Song[] | null = null;
-
-
 }

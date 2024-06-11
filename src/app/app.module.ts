@@ -11,7 +11,8 @@ import { MainContentModule } from './main-content/main-content.module';
         BrowserModule,
         BrowserAnimationsModule,
         AppRoutingModule,
-        MainContentModule
+        MainContentModule,
+        BrowserAnimationsModule
     ],
     providers: [],
     bootstrap: [AppComponent],

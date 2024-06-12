@@ -2,15 +2,15 @@
     <div class="media-image">
         <img
             class="artist-photo"
-            [src]="currentSong.imagePath"
+            [src]="currentSong.song.imagePath"
             alt="artist photo"
         />
     </div>
 
     <div class="media-section">
         <div class="media-info">
-            <h5>{{ currentSong.genre }}</h5>
-            <h5>{{ currentSong.title }} - {{ currentSong.duration }}</h5>
+            <h5>{{ currentSong.song.genre }}</h5>
+            <h5>{{ currentSong.song.title }} - {{ currentSong.song.duration }}</h5>
         </div>
 
         <mat-toolbar>

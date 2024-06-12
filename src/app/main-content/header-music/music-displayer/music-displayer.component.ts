@@ -1,8 +1,11 @@
 import { Component, Input } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Song } from '../../../model/song.model'
+import { CurrentSong } from '../../../model/current-song.model'
 import * as moment from 'moment';
+import { AppState } from 'src/app/model/appstate.model';
+import { selectCurrentSongs } from 'src/app/ngrx/app.selector';
 
 @Component({
     selector: 'app-music-displayer',
@@ -12,33 +15,26 @@ import * as moment from 'moment';
 export class MusicDisplayerComponent {
     shuffleActive: boolean = false;
     durationSong: number = 100;
-    currentSong: Song = {
+    /*currentSong: Song = {
         title: "Bohemian Rhapsody",
         genre: "Rock",
         releaseDate: "1975-10-31",
         duration: 355,
         songPath: "../../../../assets/bohemian_rhapsody.mp3",
         imagePath: "../../../../assets/music.png"
-    };
+    };*/
     audio = new Audio;
 
-    updateCurrentTime() {
-        // Force Angular to detect changes
-        this.audio.currentTime = this.audio.currentTime;
-    }
+    currentSong!: CurrentSong;
 
-    constructor() {
-        // TODO: this section should be deleted
-        // once reducer is implemented
-        this.audio.src = this.currentSong.songPath;
-        let duration = this.audio.duration;
-        console.log('Audio duration:', duration);
-
-        this.audio.play();
+    constructor(private readonly store: Store<AppState>) {
+        this.store.select(selectCurrentSongs)
+            .subscribe((currentSong) => {
+                this.currentSong = currentSong;
+            });
 
         this.audio.addEventListener('loadedmetadata', () => {
             this.durationSong = Math.round(this.audio.duration);
-            console.log('Audio duration:', this.durationSong);
         });
     }
 
@@ -48,7 +44,6 @@ export class MusicDisplayerComponent {
         console.log(" audio.readyState : ", this.audio.readyState)
         */
     }
-
 
     durationSlider(event: any) {
         this.audio.currentTime = event.target.value;

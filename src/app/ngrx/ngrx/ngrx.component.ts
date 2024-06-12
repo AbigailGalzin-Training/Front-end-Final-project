@@ -10,8 +10,10 @@ import {
     selectAllArtists,
     selectAllSongs,
     selectSong,
+    selectCurrentSongs
 } from '../app.selector';
 import { Song } from 'src/app/model/song.model';
+import { CurrentSong } from 'src/app/model/current-song.model';
 
 @Component({
     selector: 'app-ngrx',

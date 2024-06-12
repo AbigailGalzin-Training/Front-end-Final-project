@@ -21,10 +21,9 @@ import { MainContentModule } from './main-content/main-content.module';
             appState: appReducer,
         }),
         EffectsModule.forRoot([]),
-        StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
-        BrowserAnimationsModule,
+        StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
     ],
     providers: [],
     bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule { }

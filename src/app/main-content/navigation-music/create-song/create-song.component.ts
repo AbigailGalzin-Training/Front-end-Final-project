@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { CreateModalComponent } from '../create-modal/create-modal.component';
+import { SongService } from 'src/app/core/services/song/song.service';
 
 @Component({
     selector: 'app-create-song',
@@ -27,12 +29,11 @@ export class CreateSongComponent {
         },
     ];
     
-    @Output() close = new EventEmitter<void>();
-    @Output() save = new EventEmitter<any>();
-
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: any,
         private fb: FormBuilder,
+        public dialogRef: MatDialogRef<CreateModalComponent>,
+        private songService: SongService
     ) {
         this.createForm = this.fb.group({
             album: ['', Validators.required],
@@ -47,11 +48,9 @@ export class CreateSongComponent {
 
     onSubmit() {
         if (this.createForm.valid) {
-            this.save.emit(this.createForm.value);
+            const createdSong = this.createForm.value
+            this.songService.create(createdSong);
+            this.dialogRef.close();
         }
-    }
-
-    closeModal() {
-        this.close.emit();
     }
 }

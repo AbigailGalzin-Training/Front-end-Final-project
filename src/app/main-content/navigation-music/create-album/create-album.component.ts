@@ -1,6 +1,8 @@
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { AlbumService } from 'src/app/core/services/album/album.service';
+import { CreateModalComponent } from '../create-modal/create-modal.component';
 
 @Component({
     selector: 'app-create-album',
@@ -28,12 +30,11 @@ export class CreateAlbumComponent {
         },
     ];
 
-    @Output() close = new EventEmitter<void>();
-    @Output() save = new EventEmitter<any>();
-
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: any,
         private fb: FormBuilder,
+        public dialogRef: MatDialogRef<CreateModalComponent>,
+        private albumService: AlbumService,
     ) {
         this.createForm = this.fb.group({
             artistName: ['', Validators.required],
@@ -46,11 +47,9 @@ export class CreateAlbumComponent {
 
     onSubmit() {
         if (this.createForm.valid) {
-            this.save.emit(this.createForm.value);
+            const createdAlbum = this.createForm.value;
+            this.albumService.create(createdAlbum);
+            this.dialogRef.close();
         }
-    }
-
-    closeModal() {
-        this.close.emit();
     }
 }

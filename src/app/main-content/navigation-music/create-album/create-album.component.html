@@ -1,35 +1,40 @@
-<h1 mat-dialog-title>Create Artist</h1>
 <div mat-dialog-content>
     <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
-        <label>
-            artist name:
-            <input formControlName="artistName" type="text" />
-        </label>
-        <mat-form-field>
-            <label>Input</label>
-            <input matInput>
-          </mat-form-field>
-        <label>
-            genres:
-            <input formControlName="musicGenres" type="text" />
-        </label>
-        <label>
-            integrants:
-            <input formControlName="integrants" type="text" />
-        </label>
-        <label>
-            website:
-            <input formControlName="website" type="text" />
-        </label>
-        <label>
-            image:
-            <input formControlName="image" type="text" />
-        </label>
-
+        <div class="form">
+            <label>
+                Select artist:
+            </label>
+            <mat-form-field>                
+                <mat-select formControlName="artistName">
+                    <mat-option *ngFor="let artist of artistList" [value]="artist">
+                        {{artist.title}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <label>
+                Title:
+            </label>
+            <mat-form-field>
+                <input matInput formControlName="albumTitle" type="text">
+            </mat-form-field>
+            <label>
+                Genre:
+            </label>
+            <mat-form-field>
+                <input matInput formControlName="albumGenre" type="text">
+            </mat-form-field>
+            <label>
+                Year of release:
+            </label>
+            <mat-form-field>
+                <input matInput formControlName="yearAlbum" type="text">
+            </mat-form-field>
+            <label>
+                Image:
+            </label>
+            <mat-form-field>
+                <input matInput formControlName="albumImage" type="text">
+            </mat-form-field>
+        </div>
     </form>
-</div>
-<div mat-dialog-actions>
-    <!--<button mat-button (click)="save()">Save</button>-->
-    <button type="submit" [disabled]="!createForm.valid">Save</button>
-    <button mat-button (click)="closeModal()">Close</button>
 </div>

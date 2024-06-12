@@ -1,0 +1,16 @@
+<mat-toolbar class="media-controls">
+  <button mat-icon-button (click)="prevSong()">
+    <mat-icon>skip_previous</mat-icon>
+  </button>
+  <button mat-icon-button (click)="playSong()">
+    <mat-icon>{{audio.paused ? 'play_arrow' : 'pause'}}</mat-icon>
+  </button>
+  <button mat-icon-button (click)="nextSong()">
+    <mat-icon>skip_next</mat-icon>
+  </button>
+  <button mat-icon-button (click)="volumeSong()">
+    <mat-icon>volume_up</mat-icon>
+  </button>
+  <mat-slider color="primary" value="16" step="1" min="0" max="16">
+  </mat-slider>
+</mat-toolbar>

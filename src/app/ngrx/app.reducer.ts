@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import { AppState } from '../model/appstate.model';
-import { addArtist, addInitialData } from './app.action';
+import { addArtist, addCurrentSong, addInitialData } from './app.action';
 
 export const initialState: AppState = {
     artists: [
@@ -299,11 +299,30 @@ export const initialState: AppState = {
             ],
         },
     ],
+    currentSong: {
+        song: {
+            title: 'Nude',
+            genre: 'Alternative',
+            releaseDate: '2007-10-10',
+            duration: 263,
+            songPath: 'https://example.com/music/nude.mp3',
+        },
+        albumName: 'In Rainbows',
+        artistName: 'Radiohead',
+    },
 };
 
 export const appReducer = createReducer(
     initialState,
     on(addInitialData, (state, { data }) => ({
         ...data,
+    })),
+    on(addCurrentSong, (state, { artistName, albumTitle, song }) => ({
+        ...state,
+        currentSong: {
+            artistName: artistName,
+            albumName: albumTitle,
+            song: song,
+        },
     })),
 );

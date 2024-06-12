@@ -248,7 +248,6 @@ export const initialState: AppState = {
                 'Philip Selway',
             ],
             webSite: 'https://www.radiohead.com',
-            // imagePath: 'https://example.com/radiohead.jpg',
             imagePath: 'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1672929736271-Selena_Gomez.jpg',
             albums: [
                 {

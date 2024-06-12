@@ -6,7 +6,7 @@ import { Song } from '../model/song.model';
 
 export const addInitialData = createAction(
     '[App] Add Initial Data',
-    props<{ data: AppState }>()
+    props<{ data: AppState }>(),
 );
 
 export const addArtist = createAction(
@@ -20,4 +20,8 @@ export const addAlbum = createAction(
 export const addSong = createAction(
     '[Song] Add Song',
     props<{ artistName: string; albumTitle: string; song: Song }>(),
+);
+export const updateState = createAction(
+    '[App] Update State',
+    props<{ newState: AppState }>(),
 );

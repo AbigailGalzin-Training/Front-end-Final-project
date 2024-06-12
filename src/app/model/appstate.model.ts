@@ -1,5 +1,6 @@
 import { Artist } from './artist.model';
 
 export interface AppState {
+    currentArtist: string;
     artists: Artist[];
 }

@@ -1,16 +1,18 @@
 import { Component, EventEmitter, Inject, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { CreateModalComponent } from '../create-modal/create-modal.component';
+import { SongService } from 'src/app/core/services/song/song.service';
 
 @Component({
     selector: 'app-create-song',
     templateUrl: './create-song.component.html',
-    styleUrls: ['./create-song.component.sass']
+    styleUrls: ['./create-song.component.sass'],
 })
 export class CreateSongComponent {
     createForm: FormGroup;
     title!: string;
-    albums: any [] = [
+    albums: any[] = [
         {
             title: 'Yellow',
             genre: 'Rock',
@@ -26,13 +28,12 @@ export class CreateSongComponent {
             songPath: 'https://example.com/music/shiver.mp3',
         },
     ];
-    
-    @Output() close = new EventEmitter<void>();
-    @Output() save = new EventEmitter<any>();
 
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: any,
         private fb: FormBuilder,
+        public dialogRef: MatDialogRef<CreateModalComponent>,
+        private songService: SongService,
     ) {
         this.createForm = this.fb.group({
             album: ['', Validators.required],
@@ -41,17 +42,19 @@ export class CreateSongComponent {
             songGenre: ['', Validators.required],
             songYear: ['', Validators.required],
             songDuration: ['', Validators.required],
-            link: ['', Validators.required],            
+            link: ['', Validators.required],
         });
     }
 
     onSubmit() {
         if (this.createForm.valid) {
-            this.save.emit(this.createForm.value);
+            const createdSong = this.createForm.value;
+            this.songService.create(createdSong);
+            this.dialogRef.close();
         }
     }
 
     closeModal() {
-        this.close.emit();
+        this.dialogRef.close();
     }
 }

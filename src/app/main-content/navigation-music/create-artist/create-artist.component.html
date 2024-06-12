@@ -1,35 +1,32 @@
-<h1 mat-dialog-title>Create Artist</h1>
 <div mat-dialog-content>
     <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
-        <label>
-            artist name:
-            <input formControlName="artistName" type="text" />
-        </label>
-        <mat-form-field>
-            <label>Input</label>
-            <input matInput>
-          </mat-form-field>
-        <label>
-            genres:
-            <input formControlName="musicGenres" type="text" />
-        </label>
-        <label>
-            integrants:
-            <input formControlName="integrants" type="text" />
-        </label>
-        <label>
-            website:
-            <input formControlName="website" type="text" />
-        </label>
-        <label>
-            image:
-            <input formControlName="image" type="text" />
-        </label>
-
+        <div class="form">
+            <label> Artist name: </label>
+            <mat-form-field>
+                <input matInput formControlName="artistName" type="text" />
+            </mat-form-field>
+            <label> Genres: </label>
+            <mat-form-field>
+                <input matInput formControlName="musicGenres" type="text" />
+            </mat-form-field>
+            <label> Integrants: </label>
+            <mat-form-field>
+                <input matInput formControlName="integrants" type="text" />
+            </mat-form-field>
+            <label> Website: </label>
+            <mat-form-field>
+                <input matInput formControlName="website" type="text" />
+            </mat-form-field>
+            <label> Image: </label>
+            <mat-form-field>
+                <input matInput formControlName="image" type="text" />
+            </mat-form-field>
+        </div>
+        <div mat-dialog-actions>
+            <button type="submit" mat-button [disabled]="!createForm.valid">
+                Save
+            </button>
+            <button mat-button (click)="closeModal()">Close</button>
+        </div>
     </form>
-</div>
-<div mat-dialog-actions>
-    <!--<button mat-button (click)="save()">Save</button>-->
-    <button type="submit" [disabled]="!createForm.valid">Save</button>
-    <button mat-button (click)="closeModal()">Close</button>
 </div>

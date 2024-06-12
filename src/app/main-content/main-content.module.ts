@@ -21,7 +21,13 @@ import { RouterModule } from '@angular/router';
 import {MatSelectModule} from '@angular/material/select';
 import { AlbumCardComponent } from './album-content/album-card/album-card.component';
 import { AlbumsByArtistComponent } from './album-content/albums-by-artist/albums-by-artist.component';
+import { MusicDisplayerComponent } from './header-music/music-displayer/music-displayer.component';
+import { MusicControlComponent } from './header-music/music-control/music-control.component';
 
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatIconModule } from '@angular/material/icon';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatSliderModule } from '@angular/material/slider'
 @NgModule({
     declarations: [
         MainContentComponent,
@@ -36,6 +42,8 @@ import { AlbumsByArtistComponent } from './album-content/albums-by-artist/albums
         CreateSongComponent,
         AlbumCardComponent,
         AlbumsByArtistComponent,
+        MusicDisplayerComponent,
+        MusicControlComponent
     ],
     imports: [
         CommonModule,
@@ -49,7 +57,11 @@ import { AlbumsByArtistComponent } from './album-content/albums-by-artist/albums
         MatInputModule,
         MatSelectModule,
         RouterModule,
+        MatToolbarModule,
+        MatIconModule,
+        MatProgressBarModule,
+        MatSliderModule
     ],
     exports: [MainContentComponent],
 })
-export class MainContentModule {}
+export class MainContentModule { }

@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
     templateUrl: './header-music.component.html',
     styleUrls: ['./header-music.component.sass'],
 })
-export class HeaderMusicComponent {}
+export class HeaderMusicComponent {
+
+}

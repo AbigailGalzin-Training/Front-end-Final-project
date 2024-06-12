@@ -4,7 +4,7 @@
             <label>
                 Select artist:
             </label>
-            <mat-form-field>                
+            <mat-form-field>
                 <mat-select formControlName="artistName">
                     <mat-option *ngFor="let artist of artistList" [value]="artist">
                         {{artist.title}}

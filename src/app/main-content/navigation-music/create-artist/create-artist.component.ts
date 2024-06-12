@@ -35,4 +35,8 @@ export class CreateArtistComponent {
             this.dialogRef.close();
         }
     }
+
+    closeModal() {
+        this.dialogRef.close();
+    }
 }

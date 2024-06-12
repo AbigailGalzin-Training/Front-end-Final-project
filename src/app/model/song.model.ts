@@ -7,4 +7,5 @@ export interface Song {
     releaseDate: string;
     duration: number;
     songPath: string;
+    imagePath?: string;
 }

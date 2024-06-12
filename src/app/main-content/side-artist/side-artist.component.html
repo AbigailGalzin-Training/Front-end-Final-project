@@ -1,3 +1,11 @@
 <div class="sidebar">
-    <app-card-artist *ngFor="let artist of artists" [nameArtist]="artist.name" [linkPhoto]="artist.photo"></app-card-artist>
+    <app-card-artist
+        nameArtist="All Artists"
+        linkPhoto="../../../assets/music.png"
+    ></app-card-artist>
+    <app-card-artist
+        *ngFor="let artist of artists | async"
+        [nameArtist]="artist.name"
+        [linkPhoto]="artist.imagePath"
+    ></app-card-artist>
 </div>

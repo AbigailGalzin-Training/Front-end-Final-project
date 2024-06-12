@@ -9,19 +9,29 @@ import { Song } from '../../../model/song.model'
     styleUrls: ['./music-displayer.component.sass']
 })
 export class MusicDisplayerComponent {
-    @Input() artistName?: string;
-    @Input() songName?: string;
-    @Input() genre?: string;
-
+    durationSong: number = 1;
     currentSong: Song = {
         title: "Bohemian Rhapsody",
         genre: "Rock",
         releaseDate: "1975-10-31",
-        duration: 354, // Duration in seconds
+        duration: 355,
         songPath: "../../../../assets/bohemian_rhapsody.mp3",
         imagePath: "../../../../assets/music.png"
     };
+
+    audio = new Audio;
+    constructor() {
+        // TODO: this section should be deleted
+        // once reducer is implemented
+        this.audio.src = this.currentSong.songPath;
+        this.audio.play();
+    }
+
     randomSong() {
         console.log("-- click on randomSong")
+    }
+
+    durationSlider(event: any) {
+        this.audio.currentTime = event.target.value;
     }
 }

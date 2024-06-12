@@ -1,10 +1,15 @@
 import { Component, Input } from '@angular/core';
 
 @Component({
-  selector: 'app-song-component',
-  templateUrl: './song-component.component.html',
-  styleUrls: ['./song-component.component.sass']
+    selector: 'app-song-component',
+    templateUrl: './song-component.component.html',
+    styleUrls: ['./song-component.component.sass'],
 })
 export class SongComponentComponent {
-  @Input() songName: string | null = null;
+    @Input() songName: string | null = null;
+    isHidden = true;
+
+    toggleImage(): void {
+        this.isHidden = !this.isHidden;
+    }
 }

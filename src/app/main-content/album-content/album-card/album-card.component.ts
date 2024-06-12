@@ -26,7 +26,7 @@ export class AlbumCardComponent {
     }
 
     mockedSong: Song = {
-        title: '',
+        title: 'SAVED IN COMPONENT!',
         genre: '',
         releaseDate: '',
         duration: 0,
@@ -35,6 +35,12 @@ export class AlbumCardComponent {
     };
 
     onClick(currentSong: string) {
-        addCurrentSong(this.artist, this.album, this.mockedSong);
+        this.store.dispatch(
+            addCurrentSong({
+                artistName: this.artist,
+                albumTitle: this.album,
+                song: this.mockedSong,
+            }),
+        );
     }
 }

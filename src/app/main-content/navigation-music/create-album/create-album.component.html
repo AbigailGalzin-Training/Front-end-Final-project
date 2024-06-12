@@ -36,5 +36,11 @@
                 <input matInput formControlName="albumImage" type="text">
             </mat-form-field>
         </div>
+        <div mat-dialog-actions>
+            <button type="submit" mat-button [disabled]="!createForm.valid">
+                Save
+            </button>
+            <button mat-button (click)="closeModal()">Close</button>
+        </div>
     </form>
 </div>

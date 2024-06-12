@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Inject, Output } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AlbumService } from 'src/app/core/services/album/album.service';
@@ -51,5 +51,9 @@ export class CreateAlbumComponent {
             this.albumService.create(createdAlbum);
             this.dialogRef.close();
         }
+    }
+
+    closeModal() {
+        this.dialogRef.close();
     }
 }

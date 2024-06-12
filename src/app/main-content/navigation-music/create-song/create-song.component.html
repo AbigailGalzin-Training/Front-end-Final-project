@@ -1,55 +1,51 @@
 <div mat-dialog-content>
     <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
         <div class="form">
-            <label>
-                Select album:
-            </label>
+            <label> Select album: </label>
             <mat-form-field>
                 <mat-select formControlName="album">
                     <mat-option *ngFor="let album of albums" [value]="album">
-                        {{album.title}}
+                        {{ album.title }}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <label>
-                Name artist:
-            </label>
+            <label> Name artist: </label>
             <mat-form-field>
-                <input matInput formControlName="nameArtist" type="text">
+                <input matInput formControlName="nameArtist" type="text" />
             </mat-form-field>
-            <label>
-                Title:
-            </label>
+            <label> Title: </label>
             <mat-form-field>
-                <input matInput formControlName="songTitle" type="text">
+                <input matInput formControlName="songTitle" type="text" />
             </mat-form-field>
-            <label>
-                Song genre:
-            </label>
+            <label> Song genre: </label>
             <mat-form-field>
-                <input matInput formControlName="songGenre" type="text">
+                <input matInput formControlName="songGenre" type="text" />
             </mat-form-field>
             <div>
-                <label>
-                    Year of release:
-                </label>
+                <label> Year of release: </label>
                 <mat-form-field>
-                    <input matInput formControlName="songYear" type="number">
+                    <input matInput formControlName="songYear" type="number" />
                 </mat-form-field>
-                <label>
-                    Song duration:
-                </label>
+                <label> Song duration: </label>
                 <mat-form-field>
-                    <input matInput formControlName="songDuration" type="text">
+                    <input
+                        matInput
+                        formControlName="songDuration"
+                        type="text"
+                    />
                 </mat-form-field>
             </div>
-            
-            <label>
-                Link song:
-            </label>
+
+            <label> Link song: </label>
             <mat-form-field>
-                <input matInput formControlName="link" type="text">
+                <input matInput formControlName="link" type="text" />
             </mat-form-field>
+        </div>
+        <div mat-dialog-actions>
+            <button type="submit" mat-button [disabled]="!createForm.valid">
+                Save
+            </button>
+            <button mat-button (click)="closeModal()">Close</button>
         </div>
     </form>
 </div>

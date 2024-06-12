@@ -41,7 +41,7 @@ export class CreateAlbumComponent {
             albumTitle: ['', Validators.required],
             albumGenre: ['', Validators.required],
             yearAlbum: ['', Validators.required],
-            image: ['', Validators.required],
+            albumImage: ['', Validators.required],
         });
     }
 

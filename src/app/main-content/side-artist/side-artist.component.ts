@@ -20,6 +20,5 @@ export class SideArtistComponent {
         this.artists = this.store.select(selectAllArtists);
     }
     ngOnInit(): void {
-        // this.artists = this.artistService.getArtists();
     }
 }

@@ -73,7 +73,7 @@ export class HeaderMusicComponent {
         }
     }
 
-    nextSong(): void {
+    nextSong(): void {        
         if(this.shuffleActive) {
             this.currentSongOut = this.dataService.nextSong();
         } else {
@@ -84,11 +84,16 @@ export class HeaderMusicComponent {
     }
 
     previousSong(): void {
-        if(this.shuffleActive) {            
-            this.currentSongOut = this.dataService.previousSong();
-        } else {
-            this.currentSongOut = this.dataService.randomSong();
+        const time = this.songService.getCurrenTime();
+        
+        if (!(time <= 10)) {            
+            if(this.shuffleActive) {
+                this.currentSongOut = this.dataService.previousSong();
+            } else {
+                this.currentSongOut = this.dataService.randomSong();
+            }
         }
+
         this.updateLocalSong();
     }
 
@@ -109,7 +114,8 @@ export class HeaderMusicComponent {
             song: this.currentSongOut,
             albumName: currentAlbum.title,
             artistName: artistName.name
-        }
+        };
+        this.audio.src = this.currentSong.song.songPath;
     }
 
     durationSlider(event: any) {

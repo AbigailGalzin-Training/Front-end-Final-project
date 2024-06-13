@@ -1,7 +1,7 @@
 import { AppState } from 'src/app/model/appstate.model';
+import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { Artist } from '../model/artist.model';
 import { Album } from '../model/album';
-import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { CurrentSong } from '../model/current-song.model';
 
 export const selectAppState = createFeatureSelector<AppState>('appState');
@@ -50,3 +50,30 @@ export const selectCurrentSongs =
         selectAppState,
         (state: AppState) => state.currentSong,
     );
+export const selectAlbumsForCurrentArtist = createSelector(
+    selectAppState,
+    (state: AppState) => {
+        if (state.currentArtist === 'All Artists') {
+            let albums: Album[] = [];
+            state.artists.forEach((artist) => {
+                albums = [...albums, ...artist.albums];
+            });
+            return albums;
+        } else {
+            const currentArtist = state.artists.find((artist) => {
+                return artist.name === state.currentArtist;
+            });
+            return currentArtist ? currentArtist.albums : [];
+        }
+    },
+);
+
+export const selectCurrentArtist = createSelector(
+    selectAppState,
+    (state: AppState) => state.currentArtist,
+);
+
+export const selectCurrentSong = createSelector(
+    selectAppState,
+    (state: AppState) => state.currentSong,
+);

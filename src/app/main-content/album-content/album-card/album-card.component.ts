@@ -3,8 +3,9 @@ import { Song } from '../../../model/song.model';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/model/appstate.model';
 import { Observable } from 'rxjs';
-import { selectAllSongs } from 'src/app/ngrx/app.selector';
+import { selectAllSongs, selectCurrentSong } from 'src/app/ngrx/app.selector';
 import { addCurrentSong } from 'src/app/ngrx/app.action';
+import { CurrentSong } from 'src/app/model/current-song.model';
 
 @Component({
     selector: 'app-album-card',
@@ -12,17 +13,17 @@ import { addCurrentSong } from 'src/app/ngrx/app.action';
     styleUrls: ['./album-card.component.sass'],
 })
 export class AlbumCardComponent {
-    @Input() title: string | null = null;
+    @Input() title!: string;
     @Input() releaseDate: string | null = null;
     @Input() genre: string | null = null;
     @Input() photo: string | null = null;
+    @Input() songs!: Song[] | null;
+    @Input() artistName!: string | null;
 
-    artist: string = 'Coldplay';
-    album: string = 'Parachutes';
-    songs: Observable<Song[] | undefined>;
+    currentSong: Observable<CurrentSong>;
 
     constructor(private readonly store: Store<AppState>) {
-        this.songs = this.store.select(selectAllSongs(this.artist, this.album));
+        this.currentSong = this.store.select(selectCurrentSong);
     }
 
     mockedSong: Song = {
@@ -34,12 +35,12 @@ export class AlbumCardComponent {
         imagePath: "../../../../assets/music.png"
     };
 
-    onClick(currentSong: string) {
+    onClick(currentSong: Song) {
         this.store.dispatch(
             addCurrentSong({
-                artistName: this.artist,
-                albumTitle: this.album,
-                song: this.mockedSong,
+                artistName: this.artistName !== null ? this.artistName : '',
+                albumTitle: this.title,
+                song: currentSong,
             }),
         );
     }

@@ -18,6 +18,7 @@ import { CreateAlbumComponent } from './navigation-music/create-album/create-alb
 import { CreateArtistComponent } from './navigation-music/create-artist/create-artist.component';
 import { CreateSongComponent } from './navigation-music/create-song/create-song.component';
 import { RouterModule } from '@angular/router';
+import {MatSelectModule} from '@angular/material/select';
 import { AlbumCardComponent } from './album-content/album-card/album-card.component';
 import { AlbumsByArtistComponent } from './album-content/albums-by-artist/albums-by-artist.component';
 import { MusicDisplayerComponent } from './header-music/music-displayer/music-displayer.component';
@@ -56,6 +57,7 @@ import { SongComponentComponent } from './album-content/album-card/song-componen
         MatDialogModule,
         MatFormFieldModule,
         MatInputModule,
+        MatSelectModule,
         RouterModule,
         MatToolbarModule,
         MatIconModule,

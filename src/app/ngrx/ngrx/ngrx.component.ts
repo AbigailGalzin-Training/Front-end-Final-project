@@ -4,6 +4,7 @@ import { Artist } from '../../model/artist.model';
 import { AppState } from '../../model/appstate.model';
 import { Album } from '../../model/album';
 import { Store } from '@ngrx/store';
+import { Song } from 'src/app/model/song.model';
 import {
     selectAlbum,
     selectAllAlbums,
@@ -12,7 +13,6 @@ import {
     selectSong,
     selectCurrentSongs
 } from '../app.selector';
-import { Song } from 'src/app/model/song.model';
 import { CurrentSong } from 'src/app/model/current-song.model';
 
 @Component({

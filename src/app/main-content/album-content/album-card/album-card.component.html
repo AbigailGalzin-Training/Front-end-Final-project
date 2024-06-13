@@ -5,9 +5,9 @@
     <div class="album-information">
         <p class="album-title">{{ title }}</p>
         <app-song-component
-            *ngFor="let song of songs | async"
+            *ngFor="let song of songs"
             [songName]="song.title"
-            (click)="onClick(song.title)"
+            (click)="onClick(song)"
             ></app-song-component
         >
     </div>

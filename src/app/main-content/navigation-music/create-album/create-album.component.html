@@ -1,1 +1,46 @@
-<p>create-album works!</p>
+<div mat-dialog-content>
+    <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
+        <div class="form">
+            <label>
+                Select artist:
+            </label>
+            <mat-form-field>
+                <mat-select formControlName="artistName">
+                    <mat-option *ngFor="let artist of artistList" [value]="artist">
+                        {{artist.title}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field>
+            <label>
+                Title:
+            </label>
+            <mat-form-field>
+                <input matInput formControlName="albumTitle" type="text">
+            </mat-form-field>
+            <label>
+                Genre:
+            </label>
+            <mat-form-field>
+                <input matInput formControlName="albumGenre" type="text">
+            </mat-form-field>
+            <label>
+                Year of release:
+            </label>
+            <mat-form-field>
+                <input matInput formControlName="yearAlbum" type="number">
+            </mat-form-field>
+            <label>
+                Image:
+            </label>
+            <mat-form-field>
+                <input matInput formControlName="albumImage" type="text">
+            </mat-form-field>
+        </div>
+        <div mat-dialog-actions>
+            <button type="submit" mat-button [disabled]="!createForm.valid">
+                Save
+            </button>
+            <button mat-button (click)="closeModal()">Close</button>
+        </div>
+    </form>
+</div>

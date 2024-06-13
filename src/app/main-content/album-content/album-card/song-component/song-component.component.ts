@@ -13,7 +13,7 @@ export class SongComponentComponent implements OnChanges {
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['isCurrentSong']) {
-            this.isHidden = this.isCurrentSong?.song.title !== this.songName;
+            this.isHidden = this.isCurrentSong?.song.title !== this.songName;    
         }
     }
 

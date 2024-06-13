@@ -6,7 +6,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { NgrxComponent } from './ngrx/ngrx/ngrx.component';
 import { MainContentModule } from './main-content/main-content.module';
 import { localStorageSync } from 'ngrx-store-localstorage';
 import { appReducer } from './ngrx/app.reducer';
@@ -16,7 +15,7 @@ export function localStorageSyncReducer(reducer: any): any {
 }
 
 @NgModule({
-    declarations: [AppComponent, NgrxComponent],
+    declarations: [AppComponent],
     imports: [
         BrowserModule,
         BrowserAnimationsModule,

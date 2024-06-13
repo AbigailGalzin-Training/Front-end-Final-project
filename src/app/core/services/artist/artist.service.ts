@@ -26,4 +26,5 @@ export class ArtistService {
         storedData.push(data);
         localStorage.setItem(this.storageKey, JSON.stringify(storedData));
     }
+    
 }

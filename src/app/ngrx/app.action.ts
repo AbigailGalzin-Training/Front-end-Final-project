@@ -14,22 +14,20 @@ export const addArtist = createAction(
     props<{ artist: Artist }>(),
 );
 
-
 export const addAlbum = createAction(
     '[Album] Add Album',
     props<{ artistName: string; album: Album }>(),
 );
 
-
 export const addSong = createAction(
     '[Song] Add Song',
     props<{ artistName: string; albumTitle: string; song: Song }>(),
 );
+
 export const addCurrentSong = createAction(
     '[CurrentSong] Add Current Song',
     props<{ artistName: string; albumTitle: string; song: Song }>(),
 );
-
 
 export const setCurrentArtist = createAction(
     '[Artist] set artist',

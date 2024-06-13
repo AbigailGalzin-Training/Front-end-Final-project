@@ -6,7 +6,7 @@ import {
     setCurrentArtist,
     addArtist,
     addAlbum,
-    addSong
+    addSong,
 } from './app.action';
 
 export const initialState: AppState = {
@@ -343,17 +343,18 @@ export const appReducer = createReducer(
         artists: [...state.artists, artist],
     })),
 
-    on(addAlbum, (state, { artistName, album }) => {
-        const updatedArtists = state.artists.map((artist) =>
+    on(addAlbum, (state, { artistName, album }) => ({
+        ...state,
+        artists: state.artists.map((artist) =>
             artist.name === artistName
                 ? { ...artist, albums: [...artist.albums, album] }
                 : artist,
-        );
-        return { ...state, artists: updatedArtists };
-    }),
+        ),
+    })),
 
-    on(addSong, (state, { artistName, albumTitle, song }) => {
-        const updatedArtists = state.artists.map((artist) =>
+    on(addSong, (state, { artistName, albumTitle, song }) => ({
+        ...state,
+        artists: state.artists.map((artist) =>
             artist.name === artistName
                 ? {
                       ...artist,
@@ -364,9 +365,8 @@ export const appReducer = createReducer(
                       ),
                   }
                 : artist,
-        );
-        return { ...state, artists: updatedArtists };
-    }),
+        ),
+    })),
 
     on(addCurrentSong, (state, { artistName, albumTitle, song }) => ({
         ...state,

@@ -19,18 +19,26 @@ export class CreateAlbumComponent {
     /*TODO typeArtist*/
     artistList: any[] = [
         {
-            title: 'Yellow',
-            genre: 'Rock',
-            releaseDate: '2000-06-26',
-            duration: 269,
-            songPath: 'https://example.com/music/yellow.mp3',
+            name: 'Radiohead',
+            genre: ['Alternative', 'Rock', 'Experimental'],
+            members: [
+                'Thom Yorke',
+                'Jonny Greenwood',
+                'Colin Greenwood',
+                "Ed O'Brien",
+                'Philip Selway',
+            ],
+            webSite: 'https://www.radiohead.com',
+            imagePath:
+                'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1672929736271-Selena_Gomez.jpg',
         },
         {
-            title: 'Shiver',
-            genre: 'Rock',
-            releaseDate: '2000-07-10',
-            duration: 299,
-            songPath: 'https://example.com/music/shiver.mp3',
+            name: 'Beyoncé',
+            genre: ['R&B', 'Pop', 'Hip-Hop'],
+            members: ['Beyoncé Giselle Knowles-Carter'],
+            webSite: 'https://www.beyonce.com',
+            imagePath:
+                'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1666955170588-Ariana-Grande-wa_59e11327.jpeg',
         },
     ];
 
@@ -53,8 +61,10 @@ export class CreateAlbumComponent {
     onSubmit() {
         if (this.createForm.valid) {
             const createdAlbum = this.createForm.value;
-            const { artistName, title, genre, releaseYear, imagePath } =
+            const { artist, title, genre, releaseYear, imagePath } =
                 createdAlbum;
+
+            const artistName = createdAlbum.artistName.name.toString();
             const album: Album = {
                 title,
                 genre,
@@ -62,7 +72,7 @@ export class CreateAlbumComponent {
                 imagePath,
                 songs: [],
             };
-            this.albumService.create(album);
+            this.albumService.create(album); // SAVE IN THE STORAGE, BUT IN ANOTHER LIST
             this.store.dispatch(addAlbum({ artistName, album }));
             this.dialogRef.close();
         }

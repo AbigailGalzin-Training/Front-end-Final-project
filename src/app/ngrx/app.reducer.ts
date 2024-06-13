@@ -21,30 +21,31 @@ export const initialState: AppState = {
                 'Guy Berryman',
                 'Will Champion',
             ],
-            webSite: 'https://www.coldplay.com',
+            webSite: 'https:/www.coldplay.com',
             imagePath:
-                'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3-ap-south-1.amazonaws.com/wynk-music-cms/music/artists/profile/Taylor-Swift-fotor-jpg.jpg',
+                'https:/img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http:/s3-ap-south-1.amazonaws.com/wynk-music-cms/music/artists/profile/Taylor-Swift-fotor-jpg.jpg',
             albums: [
                 {
                     title: 'Parachutes',
                     genre: 'Rock',
                     releaseYear: new Date('2000-07-10'),
-                    imagePath:
-                        'https://i.discogs.com/qX8Ho7VAkk8gW-rKITdc4cGcfaEFR4ouGsQ-aCJ64og/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ4NDAz/MC0xMTY0NzQ3Nzg4/LmpwZWc.jpeg',
+                    imagePath: 'https:/i.discogs.com/qX8Ho7VAkk8gW-rKITdc4cGcfaEFR4ouGsQ-aCJ64og/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ4NDAz/MC0xMTY0NzQ3Nzg4/LmpwZWc.jpeg',
                     songs: [
                         {
                             title: 'Yellow',
                             genre: 'Rock',
                             releaseDate: '2000-06-26',
                             duration: 269,
-                            songPath: 'https://example.com/music/yellow.mp3',
+                            songPath: '../../../../assets/yellow.mp3',
+                            imagePath: '../../../../assets/music5.png'
                         },
                         {
                             title: 'Shiver',
                             genre: 'Rock',
                             releaseDate: '2000-07-10',
                             duration: 299,
-                            songPath: 'https://example.com/music/shiver.mp3',
+                            songPath: '../../../../assets/as-it-was.mp3',
+                            imagePath: '../../../../assets/music4.png'
                         },
                     ],
                 },
@@ -53,7 +54,7 @@ export const initialState: AppState = {
                     genre: 'Alternative',
                     releaseYear: new Date('2002-08-26'),
                     imagePath:
-                        'https://i.discogs.com/jT5gf7YY-y9BNigQcuydGKiQPAHUmVZWVz0_K_4k36k/rs:fit/g:sm/q:90/h:587/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTcyNjY2/ODktMTUyMTkxNjE1/MS02MzU3LmpwZWc.jpeg',
+                        'https:/i.discogs.com/jT5gf7YY-y9BNigQcuydGKiQPAHUmVZWVz0_K_4k36k/rs:fit/g:sm/q:90/h:587/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTcyNjY2/ODktMTUyMTkxNjE1/MS02MzU3LmpwZWc.jpeg',
                     songs: [
                         {
                             title: 'The Scientist',
@@ -61,14 +62,16 @@ export const initialState: AppState = {
                             releaseDate: '2002-08-26',
                             duration: 310,
                             songPath:
-                                'https://example.com/music/the_scientist.mp3',
+                                '../../../../assets/bohemian_rhapsody.mp3',
+                            imagePath: '../../../../assets/music2.png'
                         },
                         {
                             title: 'Clocks',
                             genre: 'Alternative',
                             releaseDate: '2002-08-26',
                             duration: 307,
-                            songPath: 'https://example.com/music/clocks.mp3',
+                            songPath: '../../../../assets/as-it-was.mp3',
+                            imagePath: '../../../../assets/music2.png'
                         },
                     ],
                 },
@@ -78,16 +81,15 @@ export const initialState: AppState = {
             name: 'Adele',
             genre: ['Soul', 'Pop', 'R&B'],
             members: ['Adele Laurie Blue Adkins'],
-            webSite: 'https://www.adele.com',
+            webSite: 'https:/www.adele.com',
             imagePath:
-                'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1667189514105-Maroon-wa_24c89811.jpeg',
+                'https:/img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http:/s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1667189514105-Maroon-wa_24c89811.jpeg',
             albums: [
                 {
                     title: '19',
                     genre: 'Soul',
                     releaseYear: new Date('2008-01-28'),
-                    imagePath:
-                        'https://i.discogs.com/O6yhGT7SMs1k1Aqke-enhPenpXc4e4p9Y3xvkbtLYG0/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyNjcw/NjAtMTY3NDE1Njg4/Ny0xMjc1LmpwZWc.jpeg',
+                    imagePath: 'https:/i.discogs.com/O6yhGT7SMs1k1Aqke-enhPenpXc4e4p9Y3xvkbtLYG0/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyNjcw/NjAtMTY3NDE1Njg4/Ny0xMjc1LmpwZWc.jpeg',
                     songs: [
                         {
                             title: 'Chasing Pavements',
@@ -95,7 +97,8 @@ export const initialState: AppState = {
                             releaseDate: '2008-01-28',
                             duration: 225,
                             songPath:
-                                'https://example.com/music/chasing_pavements.mp3',
+                                '../../../../assets/as-it-was.mp3',
+                            imagePath: '../../../../assets/music4.png'
                         },
                         {
                             title: 'Hometown Glory',
@@ -103,7 +106,8 @@ export const initialState: AppState = {
                             releaseDate: '2008-01-28',
                             duration: 242,
                             songPath:
-                                'https://example.com/music/hometown_glory.mp3',
+                                '../../../../assets/bohemian_rhapsody.mp3',
+                            imagePath: '../../../../assets/music5.png'
                         },
                     ],
                 },
@@ -111,8 +115,7 @@ export const initialState: AppState = {
                     title: '21',
                     genre: 'Pop',
                     releaseYear: new Date('2011-01-24'),
-                    imagePath:
-                        'https://i.discogs.com/pbgKc7liXRhTdGM1zNhToDidUDYjK7_CQsxNaXxQTtE/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI2NjQ1/ODktMTQ1MjI2OTk5/NS03Mjk4LnBuZw.jpeg',
+                    imagePath: 'https:/i.discogs.com/pbgKc7liXRhTdGM1zNhToDidUDYjK7_CQsxNaXxQTtE/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI2NjQ1/ODktMTQ1MjI2OTk5/NS03Mjk4LnBuZw.jpeg',
                     songs: [
                         {
                             title: 'Rolling in the Deep',
@@ -120,7 +123,8 @@ export const initialState: AppState = {
                             releaseDate: '2011-01-24',
                             duration: 228,
                             songPath:
-                                'https://example.com/music/rolling_in_the_deep.mp3',
+                                '../../../../assets/mulan.mp3',
+                            imagePath: '../../../../assets/music2.png'
                         },
                         {
                             title: 'Someone Like You',
@@ -128,7 +132,8 @@ export const initialState: AppState = {
                             releaseDate: '2011-01-24',
                             duration: 285,
                             songPath:
-                                'https://example.com/music/someone_like_you.mp3',
+                                '../../../../assets/as-it-was.mp3',
+                            imagePath: '../../../../assets/music5.png'
                         },
                     ],
                 },
@@ -145,30 +150,32 @@ export const initialState: AppState = {
                 'Chris Shiflett',
                 'Rami Jaffee',
             ],
-            webSite: 'https://www.foofighters.com',
+            webSite: 'https:/www.foofighters.com',
             imagePath:
-                'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1663268125697-WhatsApp_Image_2022-09-15_at_9.17.40_PM_(2).jpeg',
+                'https:/img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http:/s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1663268125697-WhatsApp_Image_2022-09-15_at_9.17.40_PM_(2).jpeg',
             albums: [
                 {
                     title: 'The Colour and the Shape',
                     genre: 'Rock',
                     releaseYear: new Date('1997-05-20'),
                     imagePath:
-                        'https://i.discogs.com/7Im-I9Ead1iUG9ymf-VZB8qLFPL3hjwPm4HuHGjmSvo/rs:fit/g:sm/q:90/h:600/w:599/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMyNTAy/NzItMTM4NzM3OTM4/OC0yOTYwLmpwZWc.jpeg',
+                        'https:/i.discogs.com/7Im-I9Ead1iUG9ymf-VZB8qLFPL3hjwPm4HuHGjmSvo/rs:fit/g:sm/q:90/h:600/w:599/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMyNTAy/NzItMTM4NzM3OTM4/OC0yOTYwLmpwZWc.jpeg',
                     songs: [
                         {
                             title: 'Everlong',
                             genre: 'Rock',
                             releaseDate: '1997-08-18',
                             duration: 250,
-                            songPath: 'https://example.com/music/everlong.mp3',
+                            songPath: '../../../../assets/bohemian_rhapsody.mp3',
+                            imagePath: '../../../../assets/music2.png'
                         },
                         {
                             title: 'My Hero',
                             genre: 'Rock',
                             releaseDate: '1997-05-19',
                             duration: 255,
-                            songPath: 'https://example.com/music/my_hero.mp3',
+                            songPath: '../../../../assets/mulan.mp3',
+                            imagePath: '../../../../assets/music1.png'
                         },
                     ],
                 },
@@ -176,22 +183,23 @@ export const initialState: AppState = {
                     title: 'Wasting Light',
                     genre: 'Rock',
                     releaseYear: new Date('2011-04-12'),
-                    imagePath:
-                        'https://i.discogs.com/mxA3UE0y8M5vMFnhg9kdl_rwsxtAdtyn9flxP4umecg/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI4MTc0/MjMtMTMwNDYzNTY1/Mi5qcGVn.jpeg',
+                    imagePath: 'https:/i.discogs.com/mxA3UE0y8M5vMFnhg9kdl_rwsxtAdtyn9flxP4umecg/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI4MTc0/MjMtMTMwNDYzNTY1/Mi5qcGVn.jpeg',
                     songs: [
                         {
                             title: 'Rope',
                             genre: 'Rock',
                             releaseDate: '2011-02-23',
                             duration: 258,
-                            songPath: 'https://example.com/music/rope.mp3',
+                            songPath: '../../../../assets/bohemian_rhapsody.mp3',
+                            imagePath: '../../../../assets/music5.png'
                         },
                         {
                             title: 'Walk',
                             genre: 'Rock',
                             releaseDate: '2011-04-12',
                             duration: 265,
-                            songPath: 'https://example.com/music/walk.mp3',
+                            songPath: '../../../../assets/mulan.mp3',
+                            imagePath: '../../../../assets/music4.png'
                         },
                     ],
                 },
@@ -201,16 +209,15 @@ export const initialState: AppState = {
             name: 'Beyoncé',
             genre: ['R&B', 'Pop', 'Hip-Hop'],
             members: ['Beyoncé Giselle Knowles-Carter'],
-            webSite: 'https://www.beyonce.com',
+            webSite: 'https:/www.beyonce.com',
             imagePath:
-                'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1666955170588-Ariana-Grande-wa_59e11327.jpeg',
+                'https:/img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http:/s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1666955170588-Ariana-Grande-wa_59e11327.jpeg',
             albums: [
                 {
                     title: 'Dangerously in Love',
                     genre: 'R&B',
                     releaseYear: new Date('2003-06-20'),
-                    imagePath:
-                        'https://i.discogs.com/92bAvb9f_llRmgThaztmo0cwCumjqXur4kbZzFNzs-0/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMwMTcw/OS0xMjY4OTMxMzY4/LmpwZWc.jpeg',
+                    imagePath: 'https:/i.discogs.com/92bAvb9f_llRmgThaztmo0cwCumjqXur4kbZzFNzs-0/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMwMTcw/OS0xMjY4OTMxMzY4/LmpwZWc.jpeg',
                     songs: [
                         {
                             title: 'Crazy in Love',
@@ -218,14 +225,16 @@ export const initialState: AppState = {
                             releaseDate: '2003-05-18',
                             duration: 235,
                             songPath:
-                                'https://example.com/music/crazy_in_love.mp3',
+                                '../../../../assets/yellow.mp3',
+                            imagePath: '../../../../assets/music2.png'
                         },
                         {
                             title: 'Baby Boy',
                             genre: 'R&B',
                             releaseDate: '2003-08-03',
                             duration: 238,
-                            songPath: 'https://example.com/music/baby_boy.mp3',
+                            songPath: '../../../../assets/scientist.mp3',
+                            imagePath: '../../../../assets/music1.png'
                         },
                     ],
                 },
@@ -233,22 +242,23 @@ export const initialState: AppState = {
                     title: 'Lemonade',
                     genre: 'Pop',
                     releaseYear: new Date('2016-04-23'),
-                    imagePath:
-                        'https://i.discogs.com/ZKlVmncrWPj7inH8QlfToVET7Y3ZNRNV6x979KhFEUM/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTg0ODY3/MTQtMTQ3NzU3NTAx/MC02OTY5LmpwZWc.jpeg',
+                    imagePath: 'https:/i.discogs.com/ZKlVmncrWPj7inH8QlfToVET7Y3ZNRNV6x979KhFEUM/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTg0ODY3/MTQtMTQ3NzU3NTAx/MC02OTY5LmpwZWc.jpeg',
                     songs: [
                         {
                             title: 'Formation',
                             genre: 'R&B',
                             releaseDate: '2016-02-06',
                             duration: 213,
-                            songPath: 'https://example.com/music/formation.mp3',
+                            songPath: '../../../../assets/yellow.mp3',
+                            imagePath: '../../../../assets/music4.png'
                         },
                         {
                             title: 'Sorry',
                             genre: 'R&B',
                             releaseDate: '2016-04-23',
                             duration: 235,
-                            songPath: 'https://example.com/music/sorry.mp3',
+                            songPath: '../../../../assets/scientist.mp3',
+                            imagePath: '../../../../assets/music3.png'
                         },
                     ],
                 },
@@ -264,16 +274,15 @@ export const initialState: AppState = {
                 "Ed O'Brien",
                 'Philip Selway',
             ],
-            webSite: 'https://www.radiohead.com',
+            webSite: 'https:/www.radiohead.com',
             imagePath:
-                'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1672929736271-Selena_Gomez.jpg',
+                'https:/img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http:/s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1672929736271-Selena_Gomez.jpg',
             albums: [
                 {
                     title: 'OK Computer',
                     genre: 'Alternative',
                     releaseYear: new Date('1997-05-21'),
-                    imagePath:
-                        'https://i.discogs.com/F_KSyKjGi2YN5SBttMhdgP2zyNdmHv7HHWvDVGj3Shg/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ5NTA3/OTgtMTM4ODYyMzYx/MS0yMzYyLmpwZWc.jpeg',
+                    imagePath: 'https:/i.discogs.com/F_KSyKjGi2YN5SBttMhdgP2zyNdmHv7HHWvDVGj3Shg/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ5NTA3/OTgtMTM4ODYyMzYx/MS0yMzYyLmpwZWc.jpeg',
                     songs: [
                         {
                             title: 'Paranoid Android',
@@ -281,7 +290,8 @@ export const initialState: AppState = {
                             releaseDate: '1997-05-26',
                             duration: 386,
                             songPath:
-                                'https://example.com/music/paranoid_android.mp3',
+                                '../../../../assets/mulan.mp3',
+                            imagePath: '../../../../assets/music2.png'
                         },
                         {
                             title: 'Karma Police',
@@ -289,7 +299,8 @@ export const initialState: AppState = {
                             releaseDate: '1997-08-25',
                             duration: 263,
                             songPath:
-                                'https://example.com/music/karma_police.mp3',
+                                '../../../../assets/scientist.mp3',
+                            imagePath: '../../../../assets/music1.png'
                         },
                     ],
                 },
@@ -297,22 +308,23 @@ export const initialState: AppState = {
                     title: 'In Rainbows',
                     genre: 'Alternative',
                     releaseYear: new Date('2007-10-10'),
-                    imagePath:
-                        'https://i.discogs.com/7y0jjFTZp88uBO380fsYcO36I3ex_er3lZn8COq90Vc/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTExNzQy/OTYtMTY5NzMyNzQ3/Ny0yMzQ1LmpwZWc.jpeg',
+                    imagePath: 'https:/i.discogs.com/7y0jjFTZp88uBO380fsYcO36I3ex_er3lZn8COq90Vc/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTExNzQy/OTYtMTY5NzMyNzQ3/Ny0yMzQ1LmpwZWc.jpeg',
                     songs: [
                         {
                             title: '15 Step',
                             genre: 'Alternative',
                             releaseDate: '2007-10-10',
                             duration: 239,
-                            songPath: 'https://example.com/music/15_step.mp3',
+                            songPath: '../../../../assets/mulan.mp3',
+                            imagePath: '../../../../assets/music1.png'
                         },
                         {
                             title: 'Nude',
                             genre: 'Alternative',
                             releaseDate: '2007-10-10',
                             duration: 263,
-                            songPath: 'https://example.com/music/nude.mp3',
+                            songPath: '../../../../assets/scientist.mp3',
+                            imagePath: '../../../../assets/music.png'
                         },
                     ],
                 },
@@ -325,7 +337,7 @@ export const initialState: AppState = {
             genre: 'Alternative',
             releaseDate: '2007-10-10',
             duration: 263,
-            songPath: 'https://example.com/music/nude.mp3',
+            songPath: '../../../../assets/nude.mp3',
         },
         albumName: 'In Rainbows',
         artistName: 'Radiohead',

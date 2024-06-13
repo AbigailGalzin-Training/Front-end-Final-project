@@ -1,17 +1,27 @@
 <div mat-dialog-content>
     <form [formGroup]="createForm" (ngSubmit)="onSubmit()">
         <div class="form">
-            <label> Select album: </label>
+            <label> Select artist: </label>
             <mat-form-field>
-                <mat-select formControlName="album">
-                    <mat-option *ngFor="let album of albums" [value]="album">
-                        {{ album.title }}
+                <mat-select formControlName="name">
+                    <mat-option
+                        *ngFor="let artist of artistList$ | async"
+                        [value]="artist"
+                    >
+                        {{ artist.name }}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
-            <label> Name artist: </label>
+            <label> Select album: </label>
             <mat-form-field>
-                <input matInput formControlName="nameArtist" type="text" />
+                <mat-select formControlName="album">
+                    <mat-option
+                        *ngFor="let album of albums$ | async"
+                        [value]="album"
+                    >
+                        {{ album.title }}
+                    </mat-option>
+                </mat-select>
             </mat-form-field>
             <label> Title: </label>
             <mat-form-field>
@@ -24,15 +34,15 @@
             <div>
                 <label> Year of release: </label>
                 <mat-form-field>
-                    <input matInput formControlName="releaseDate" type="number" />
+                    <input
+                        matInput
+                        formControlName="releaseDate"
+                        type="number"
+                    />
                 </mat-form-field>
                 <label> Song duration: </label>
                 <mat-form-field>
-                    <input
-                        matInput
-                        formControlName="duration"
-                        type="text"
-                    />
+                    <input matInput formControlName="duration" type="text" />
                 </mat-form-field>
             </div>
 

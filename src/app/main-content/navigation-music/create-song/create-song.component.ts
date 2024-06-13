@@ -7,6 +7,8 @@ import { Song } from 'src/app/model/song.model';
 import { addSong } from 'src/app/ngrx/app.action';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/model/appstate.model';
+import { Observable, of, switchMap } from 'rxjs';
+import { selectAllAlbums, selectAllArtists } from 'src/app/ngrx/app.selector';
 
 @Component({
     selector: 'app-create-song',
@@ -16,6 +18,9 @@ import { AppState } from 'src/app/model/appstate.model';
 export class CreateSongComponent {
     createForm: FormGroup;
     title!: string;
+    artistList$!: Observable<any[]>;
+    albums$!: Observable<any[]>;
+    /*
     albums: any[] = [
         {
             title: 'OK Computer',
@@ -32,6 +37,7 @@ export class CreateSongComponent {
                 'https://i.discogs.com/7y0jjFTZp88uBO380fsYcO36I3ex_er3lZn8COq90Vc/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTExNzQy/OTYtMTY5NzMyNzQ3/Ny0yMzQ1LmpwZWc.jpeg',
         },
     ];
+    */
 
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: any,
@@ -42,12 +48,27 @@ export class CreateSongComponent {
     ) {
         this.createForm = this.fb.group({
             album: ['', Validators.required],
-            nameArtist: ['', Validators.required],
+            name: ['', Validators.required],
             title: ['', Validators.required],
             genre: ['', Validators.required],
             releaseDate: ['', Validators.required],
             duration: ['', Validators.required],
             songPath: ['', Validators.required],
+        });
+        this.artistList$ = this.store.select(selectAllArtists);
+        this.albums$ = this.createForm.get('name')!.valueChanges.pipe(
+            switchMap(artistName => {
+                if (artistName) {
+                    return this.store.select(selectAllAlbums(artistName));
+                }
+                return of([]); 
+            })
+        );
+    }
+
+    ngOnInit() {
+        this.artistList$.subscribe((artists) => {
+            console.log('Lista de artistas:', artists);
         });
     }
 

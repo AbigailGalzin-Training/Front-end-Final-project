@@ -69,11 +69,9 @@ export class HeaderMusicComponent {
 
     randomSong() {
         this.shuffleActive = !this.shuffleActive;
-        console.log(" audio.readyState : ", this.audio.readyState)
     }
 
     durationSlider(event: any) {
-        console.log("--- event.target.value: ", event.target.value)
         this.audio.currentTime = event.target.value;
     }
 }

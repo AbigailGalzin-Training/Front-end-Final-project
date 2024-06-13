@@ -331,7 +331,6 @@ export const appReducer = createReducer(
         },
     })),
     on(setCurrentArtist, (state, { artistName }) => {
-        console.log(artistName);
         return {
             ...state,
             currentArtist: artistName,

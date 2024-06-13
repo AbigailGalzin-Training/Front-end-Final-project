@@ -1,10 +1,10 @@
 .album-container
-    display: grid
-    grid-template-columns: 1fr 1fr 1fr 1fr
-    grid-template-rows: 1fr
-    grid-template-areas: "photo title none release"
+    position: relative
+    border-radius: 5px
+    box-shadow: 0px 0px 3px 1px gray
+    margin: 20px 0
+    display: flex
     font-family: Arial
-    margin: 0
 
 .album-photo
     width: 150px
@@ -18,12 +18,15 @@ img
     object-fit: cover
 
 .album-title
-    grid-area: title
+    min-width: 100px
+    padding-top: 10px
+    font-size: 18px
     font-weight: 800
     color: gray
 
 .album-release
+    position: absolute
+    right: 10px
     text-align: right
-    grid-area: release
     font-size: 12px
     padding-top: 16px

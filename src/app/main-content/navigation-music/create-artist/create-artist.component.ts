@@ -36,8 +36,14 @@ export class CreateArtistComponent {
     onSubmit() {
         if (this.createForm.valid) {
             const createdartist = this.createForm.value;
+            const { name, genre, members, webSite, imagePath } = createdartist;
             const artist: Artist = {
-                ...createdartist,
+                name,
+                genre,
+                members,
+                webSite,
+                imagePath,
+                albums: [],
             };
             this.store.dispatch(addArtist({ artist }));
             alert(`Artist ${createdartist.name} was successfully created.`);

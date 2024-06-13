@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class SongService {
     private storageKey = 'songData';
 
-    constructor() {}
+    constructor() { }
 
     create(data: any): void {
         const storedData = JSON.parse(
@@ -14,5 +14,13 @@ export class SongService {
         );
         storedData.push(data);
         localStorage.setItem(this.storageKey, JSON.stringify(storedData));
+    }
+
+    saveCurrentSong(data: any): void {
+        const storedData = JSON.parse(
+            localStorage.getItem(this.storageKey) || '[]',
+        );
+        storedData.push(data);
+        localStorage.setItem('CurrentSong', JSON.stringify(storedData));
     }
 }

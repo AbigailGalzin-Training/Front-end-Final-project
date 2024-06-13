@@ -4,13 +4,14 @@ import { CurrentSong } from '../../model/current-song.model'
 import { AppState } from 'src/app/model/appstate.model';
 import { selectCurrentSongs } from 'src/app/ngrx/app.selector';
 import { Subject } from 'rxjs';
-
+import { SongService } from '../../core/services/song/song.service'
 @Component({
     selector: 'app-header-music',
     templateUrl: './header-music.component.html',
     styleUrls: ['./header-music.component.sass'],
 })
 export class HeaderMusicComponent {
+    songService: SongService = new SongService;
     shuffleActive: boolean = false;
     audio = new Audio;
 
@@ -31,8 +32,8 @@ export class HeaderMusicComponent {
 
     private onCurrentSongChange() {
         this.audio.currentTime = 0;
+        this.songService.saveCurrentSong(this.currentSong);
     }
-
     ngOnInit() {
         this.audio.addEventListener('timeupdate', () => {
             this.audio.currentTime;

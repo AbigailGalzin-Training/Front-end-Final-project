@@ -9,7 +9,6 @@ export class AlbumService {
     constructor() {}
 
     create(data: any): void {
-        console.log(data);
         const storedData = JSON.parse(
             localStorage.getItem(this.storageKey) || '[]',
         );

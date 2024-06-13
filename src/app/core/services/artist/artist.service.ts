@@ -22,7 +22,6 @@ export class ArtistService {
     }
 
     create(data: any): void {
-        console.log(data);
         const storedData = JSON.parse(localStorage.getItem(this.storageKey) || '[]');
         storedData.push(data);
         localStorage.setItem(this.storageKey, JSON.stringify(storedData));

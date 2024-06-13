@@ -6,7 +6,7 @@
         </div>
         <div class="navbar-action">
             <button class="nav-button" [matMenuTriggerFor]="menu">+</button>
-            <mat-menu #menu="matMenu">
+            <mat-menu class="options" #menu="matMenu">
                 <button (click)="openCreateModal('artist', 'Create artist')" mat-menu-item>
                     Create artist
                 </button>

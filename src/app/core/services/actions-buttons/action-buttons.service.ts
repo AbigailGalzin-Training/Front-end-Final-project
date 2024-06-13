@@ -1,9 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { Album } from 'src/app/model/album';
-import { AppState } from 'src/app/model/appstate.model';
-import { Artist } from 'src/app/model/artist.model';
-import { Song } from 'src/app/model/song.model';
+import { Album } from '../../../model/album';
+import { AppState } from '../../../model/appstate.model';
+import { Artist } from '../../../model/artist.model';
+import { Song } from '../../../model/song.model';
 import {
     selectAllArtists,
     selectAllAlbums,
@@ -13,7 +13,7 @@ import {
 @Injectable({
     providedIn: 'root',
 })
-export class DataService {
+export class ActionButtonService {
     allArtist: Artist[] = [];
     albumsByArtist: Album[] = [];
     songsByAlbum: Song[] = [];

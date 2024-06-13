@@ -5,8 +5,8 @@ import { AppState } from 'src/app/model/appstate.model';
 import { Subject } from 'rxjs';
 import { SongService } from '../../core/services/song/song.service'
 import { Song } from 'src/app/model/song.model';
-import { DataService } from 'src/app/core/services/data/data.service';
 import { selectCurrentSongs } from 'src/app/ngrx/app.selector';
+import { ActionButtonService } from '../../core/services/actions-buttons/action-buttons.service';
 
 @Component({
     selector: 'app-header-music',
@@ -25,7 +25,7 @@ export class HeaderMusicComponent {
 
     constructor(
         private readonly store: Store<AppState>,
-        private dataService: DataService
+        private actionButtonService: ActionButtonService
 
     ) {
         this.store.select(selectCurrentSongs)
@@ -42,7 +42,7 @@ export class HeaderMusicComponent {
     }
 
     chargeAllData() {
-        this.currentSongOut = this.dataService.chargeAllData();
+        this.currentSongOut = this.actionButtonService.chargeAllData();
         this.updateLocalSong();
     }
 
@@ -75,9 +75,9 @@ export class HeaderMusicComponent {
 
     nextSong(): void {        
         if(this.shuffleActive) {
-            this.currentSongOut = this.dataService.nextSong();
+            this.currentSongOut = this.actionButtonService.nextSong();
         } else {
-            this.currentSongOut = this.dataService.randomSong();
+            this.currentSongOut = this.actionButtonService.randomSong();
         }
         
         this.updateLocalSong();
@@ -88,9 +88,9 @@ export class HeaderMusicComponent {
         
         if (!(time <= 10)) {            
             if(this.shuffleActive) {
-                this.currentSongOut = this.dataService.previousSong();
+                this.currentSongOut = this.actionButtonService.previousSong();
             } else {
-                this.currentSongOut = this.dataService.randomSong();
+                this.currentSongOut = this.actionButtonService.randomSong();
             }
         }
 
@@ -103,13 +103,13 @@ export class HeaderMusicComponent {
 
     randomSong() {
         this.shuffleActive = !this.shuffleActive;
-        this.currentSongOut = this.dataService.randomSong();
+        this.currentSongOut = this.actionButtonService.randomSong();
         this.updateLocalSong();
     }
 
     private updateLocalSong() {
-        const currentAlbum = this.dataService.getCurrentAlbum();
-        const artistName = this.dataService.getCurrentArtist();
+        const currentAlbum = this.actionButtonService.getCurrentAlbum();
+        const artistName = this.actionButtonService.getCurrentArtist();
         this.currentSong = {
             song: this.currentSongOut,
             albumName: currentAlbum.title,

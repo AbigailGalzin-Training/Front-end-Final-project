@@ -7,6 +7,8 @@
             [releaseDate]="album.releaseYear.toDateString()"
             [genre]="album.genre"
             [photo]="album.imagePath"
+            [songs]="album.songs"
+            [artistName]="(currentArtist|async)"
         ></app-album-card>
     </div>
 </div>

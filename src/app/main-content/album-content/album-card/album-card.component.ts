@@ -12,18 +12,17 @@ import { addCurrentSong } from 'src/app/ngrx/app.action';
     styleUrls: ['./album-card.component.sass'],
 })
 export class AlbumCardComponent {
-    @Input() title: string | null = null;
+    @Input() title!: string;
     @Input() releaseDate: string | null = null;
     @Input() genre: string | null = null;
     @Input() photo: string | null = null;
+    @Input() songs!: Song[] | null;
+    @Input() artistName!: string | null;
 
     artist: string = 'Coldplay';
     album: string = 'Parachutes';
-    songs: Observable<Song[] | undefined>;
 
-    constructor(private readonly store: Store<AppState>) {
-        this.songs = this.store.select(selectAllSongs(this.artist, this.album));
-    }
+    constructor(private readonly store: Store<AppState>) {}
 
     mockedSong: Song = {
         title: 'SAVED IN COMPONENT!',
@@ -34,12 +33,12 @@ export class AlbumCardComponent {
         imagePath: '',
     };
 
-    onClick(currentSong: string) {
+    onClick(currentSong: Song) {
         this.store.dispatch(
             addCurrentSong({
-                artistName: this.artist,
-                albumTitle: this.album,
-                song: this.mockedSong,
+                artistName: this.artistName !== null ? this.artistName : '',
+                albumTitle: this.title,
+                song: currentSong,
             }),
         );
     }

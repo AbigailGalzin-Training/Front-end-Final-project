@@ -7,7 +7,7 @@
             <mat-form-field>
                 <mat-select formControlName="artistName">
                     <mat-option *ngFor="let artist of artistList" [value]="artist">
-                        {{artist.title}}
+                        {{artist.name}}
                     </mat-option>
                 </mat-select>
             </mat-form-field>
@@ -15,25 +15,25 @@
                 Title:
             </label>
             <mat-form-field>
-                <input matInput formControlName="albumTitle" type="text">
+                <input matInput formControlName="title" type="text">
             </mat-form-field>
             <label>
                 Genre:
             </label>
             <mat-form-field>
-                <input matInput formControlName="albumGenre" type="text">
+                <input matInput formControlName="genre" type="text">
             </mat-form-field>
             <label>
                 Year of release:
             </label>
             <mat-form-field>
-                <input matInput formControlName="yearAlbum" type="number">
+                <input matInput formControlName="releaseYear" type="number">
             </mat-form-field>
             <label>
                 Image:
             </label>
             <mat-form-field>
-                <input matInput formControlName="albumImage" type="text">
+                <input matInput formControlName="imagePath" type="text">
             </mat-form-field>
         </div>
         <div mat-dialog-actions>

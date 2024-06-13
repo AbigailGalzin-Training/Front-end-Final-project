@@ -6,7 +6,7 @@
             </label>
             <mat-form-field>
                 <mat-select formControlName="artistName">
-                    <mat-option *ngFor="let artist of artistList" [value]="artist">
+                    <mat-option *ngFor="let artist of artistList$ | async" [value]="artist">
                         {{artist.name}}
                     </mat-option>
                 </mat-select>

@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { Song } from '../../../models/song.model';
 
 @Component({
     selector: 'app-album-card',

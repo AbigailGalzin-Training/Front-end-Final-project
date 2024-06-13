@@ -1,21 +1,28 @@
 <div class="media-player">
-  <div class="media-image">
-    <img class="artist-photo" [src]="currentSong.imagePath" alt="artist photo">
-  </div>
-
-  <div class="media-section">
-    <div class="media-info">
-      <h5>{{currentSong.genre}}</h5>
-      <h5>{{currentSong.title}} - {{currentSong.duration}}</h5>
+    <div class="media-image">
+        <img
+            class="artist-photo"
+            [src]="currentSong.imagePath"
+            alt="artist photo"
+        />
     </div>
 
-    <mat-toolbar>
-      <mat-slider class="slider-full" value="16" min="0" max="16">
-      </mat-slider>
-      <button mat-icon-button (click)="randomSong()">
-        <mat-icon>shuffle</mat-icon>
-      </button>
-    </mat-toolbar>
-  </div>
+    <div class="media-section">
+        <div class="media-info">
+            <h5>{{ currentSong.genre }}</h5>
+            <h5>{{ currentSong.title }} - {{ currentSong.duration }}</h5>
+        </div>
 
+        <mat-toolbar>
+            <mat-slider class="slider-full" min="1" max="{{durationSong}}">
+                <input matSliderThumb 
+                value="{{ audio.readyState === 0 ? 0 : audio.currentTime }}"
+                (input)="durationSlider($event)"
+                />
+            </mat-slider>
+            <button mat-icon-button (click)="randomSong()">
+                <mat-icon [ngClass]="{ 'active': shuffleActive, 'inactive': !shuffleActive }">shuffle</mat-icon>
+            </button>
+        </mat-toolbar>
+    </div>
 </div>

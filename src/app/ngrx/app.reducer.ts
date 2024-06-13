@@ -1,8 +1,9 @@
 import { createReducer, on } from '@ngrx/store';
 import { AppState } from '../model/appstate.model';
-import { addArtist, addCurrentSong, addInitialData } from './app.action';
+import { addCurrentSong, addInitialData, setCurrentArtist } from './app.action';
 
 export const initialState: AppState = {
+    currentArtist: '',
     artists: [
         {
             name: 'Coldplay',
@@ -14,7 +15,8 @@ export const initialState: AppState = {
                 'Will Champion',
             ],
             webSite: 'https://www.coldplay.com',
-            imagePath: 'https://example.com/coldplay.jpg',
+            imagePath:
+                'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3-ap-south-1.amazonaws.com/wynk-music-cms/music/artists/profile/Taylor-Swift-fotor-jpg.jpg',
             albums: [
                 {
                     title: 'Parachutes',
@@ -69,7 +71,8 @@ export const initialState: AppState = {
             genre: ['Soul', 'Pop', 'R&B'],
             members: ['Adele Laurie Blue Adkins'],
             webSite: 'https://www.adele.com',
-            imagePath: 'https://example.com/adele.jpg',
+            imagePath:
+                'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1667189514105-Maroon-wa_24c89811.jpeg',
             albums: [
                 {
                     title: '19',
@@ -133,7 +136,8 @@ export const initialState: AppState = {
                 'Rami Jaffee',
             ],
             webSite: 'https://www.foofighters.com',
-            imagePath: 'https://example.com/foo_fighters.jpg',
+            imagePath:
+                'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1663268125697-WhatsApp_Image_2022-09-15_at_9.17.40_PM_(2).jpeg',
             albums: [
                 {
                     title: 'The Colour and the Shape',
@@ -187,7 +191,8 @@ export const initialState: AppState = {
             genre: ['R&B', 'Pop', 'Hip-Hop'],
             members: ['Beyoncé Giselle Knowles-Carter'],
             webSite: 'https://www.beyonce.com',
-            imagePath: 'https://example.com/beyonce.jpg',
+            imagePath:
+                'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1666955170588-Ariana-Grande-wa_59e11327.jpeg',
             albums: [
                 {
                     title: 'Dangerously in Love',
@@ -247,7 +252,8 @@ export const initialState: AppState = {
                 'Philip Selway',
             ],
             webSite: 'https://www.radiohead.com',
-            imagePath: 'https://example.com/radiohead.jpg',
+            imagePath:
+                'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1672929736271-Selena_Gomez.jpg',
             albums: [
                 {
                     title: 'OK Computer',
@@ -324,4 +330,11 @@ export const appReducer = createReducer(
             song: song,
         },
     })),
+    on(setCurrentArtist, (state, { artistName }) => {
+        console.log(artistName);
+        return {
+            ...state,
+            currentArtist: artistName,
+        };
+    }),
 );

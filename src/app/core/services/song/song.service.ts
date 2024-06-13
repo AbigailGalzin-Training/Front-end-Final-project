@@ -16,11 +16,11 @@ export class SongService {
         localStorage.setItem(this.storageKey, JSON.stringify(storedData));
     }
 
-    saveCurrentSong(data: any): void {
+    saveCurrentTimeSong(data: any): void {
         const storedData = JSON.parse(
             localStorage.getItem(this.storageKey) || '[]',
         );
         storedData.push(data);
-        localStorage.setItem('CurrentSong', JSON.stringify(storedData));
+        localStorage.setItem('CurrentTimeSong', JSON.stringify(storedData));
     }
 }

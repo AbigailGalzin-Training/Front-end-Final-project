@@ -32,11 +32,10 @@ export class HeaderMusicComponent {
 
     private onCurrentSongChange() {
         this.audio.currentTime = 0;
-        this.songService.saveCurrentSong(this.currentSong);
     }
     ngOnInit() {
         this.audio.addEventListener('timeupdate', () => {
-            this.audio.currentTime;
+            this.songService.saveCurrentTimeSong(this.audio.currentTime);
         })
 
         this.audio.ondurationchange = () => {

@@ -3,8 +3,9 @@ import { Song } from '../../../model/song.model';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/model/appstate.model';
 import { Observable } from 'rxjs';
-import { selectAllSongs } from 'src/app/ngrx/app.selector';
+import { selectAllSongs, selectCurrentSong } from 'src/app/ngrx/app.selector';
 import { addCurrentSong } from 'src/app/ngrx/app.action';
+import { CurrentSong } from 'src/app/model/current-song.model';
 
 @Component({
     selector: 'app-album-card',
@@ -19,19 +20,11 @@ export class AlbumCardComponent {
     @Input() songs!: Song[] | null;
     @Input() artistName!: string | null;
 
-    artist: string = 'Coldplay';
-    album: string = 'Parachutes';
+    currentSong: Observable<CurrentSong>;
 
-    constructor(private readonly store: Store<AppState>) {}
-
-    mockedSong: Song = {
-        title: 'SAVED IN COMPONENT!',
-        genre: '',
-        releaseDate: '',
-        duration: 0,
-        songPath: '',
-        imagePath: '',
-    };
+    constructor(private readonly store: Store<AppState>) {
+        this.currentSong = this.store.select(selectCurrentSong);
+    }
 
     onClick(currentSong: Song) {
         this.store.dispatch(

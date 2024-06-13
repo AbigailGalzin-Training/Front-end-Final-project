@@ -29,6 +29,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSliderModule } from '@angular/material/slider';
 import { SongComponentComponent } from './album-content/album-card/song-component/song-component.component'
+import { ThemeToggleComponent } from './theme-toggle/theme-toggle.component';
+
 @NgModule({
     declarations: [
         MainContentComponent,
@@ -45,7 +47,8 @@ import { SongComponentComponent } from './album-content/album-card/song-componen
         AlbumsByArtistComponent,
         MusicDisplayerComponent,
         MusicControlComponent,
-        SongComponentComponent
+        SongComponentComponent,
+        ThemeToggleComponent
     ],
     imports: [
         CommonModule,

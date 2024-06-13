@@ -7,6 +7,8 @@ import { Album } from 'src/app/model/album';
 import { addAlbum } from 'src/app/ngrx/app.action';
 import { AppState } from 'src/app/model/appstate.model';
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { selectAllArtists } from 'src/app/ngrx/app.selector';
 
 @Component({
     selector: 'app-create-album',
@@ -16,31 +18,7 @@ import { Store } from '@ngrx/store';
 export class CreateAlbumComponent {
     createForm: FormGroup;
     title!: string;
-    /*TODO typeArtist*/
-    artistList: any[] = [
-        {
-            name: 'Radiohead',
-            genre: ['Alternative', 'Rock', 'Experimental'],
-            members: [
-                'Thom Yorke',
-                'Jonny Greenwood',
-                'Colin Greenwood',
-                "Ed O'Brien",
-                'Philip Selway',
-            ],
-            webSite: 'https://www.radiohead.com',
-            imagePath:
-                'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1672929736271-Selena_Gomez.jpg',
-        },
-        {
-            name: 'Beyoncé',
-            genre: ['R&B', 'Pop', 'Hip-Hop'],
-            members: ['Beyoncé Giselle Knowles-Carter'],
-            webSite: 'https://www.beyonce.com',
-            imagePath:
-                'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1666955170588-Ariana-Grande-wa_59e11327.jpeg',
-        },
-    ];
+    artistList$!: Observable<any[]>;
 
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: any,
@@ -56,7 +34,15 @@ export class CreateAlbumComponent {
             releaseYear: ['', Validators.required],
             imagePath: ['', Validators.required],
         });
+        this.artistList$ = this.store.select(selectAllArtists);
     }
+
+    ngOnInit() {
+        this.artistList$.subscribe((artists) => {
+            console.log('Lista de artistas:', artists);
+        });
+    }
+    
 
     onSubmit() {
         if (this.createForm.valid) {

@@ -7,6 +7,8 @@ import { Song } from 'src/app/model/song.model';
 import { addSong } from 'src/app/ngrx/app.action';
 import { Store } from '@ngrx/store';
 import { AppState } from 'src/app/model/appstate.model';
+import { Observable, of, switchMap } from 'rxjs';
+import { selectAllAlbums, selectAllArtists } from 'src/app/ngrx/app.selector';
 
 @Component({
     selector: 'app-create-song',
@@ -16,22 +18,8 @@ import { AppState } from 'src/app/model/appstate.model';
 export class CreateSongComponent {
     createForm: FormGroup;
     title!: string;
-    albums: any[] = [
-        {
-            title: 'OK Computer',
-            genre: 'Alternative',
-            releaseYear: new Date('1997-05-21'),
-            imagePath:
-                'https://i.discogs.com/F_KSyKjGi2YN5SBttMhdgP2zyNdmHv7HHWvDVGj3Shg/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ5NTA3/OTgtMTM4ODYyMzYx/MS0yMzYyLmpwZWc.jpeg',
-        },
-        {
-            title: 'In Rainbows',
-            genre: 'Alternative',
-            releaseYear: new Date('2007-10-10'),
-            imagePath:
-                'https://i.discogs.com/7y0jjFTZp88uBO380fsYcO36I3ex_er3lZn8COq90Vc/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTExNzQy/OTYtMTY5NzMyNzQ3/Ny0yMzQ1LmpwZWc.jpeg',
-        },
-    ];
+    artistList$!: Observable<any[]>;
+    albums$!: Observable<any[]>;
 
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: any,
@@ -42,12 +30,27 @@ export class CreateSongComponent {
     ) {
         this.createForm = this.fb.group({
             album: ['', Validators.required],
-            nameArtist: ['', Validators.required],
+            name: ['', Validators.required],
             title: ['', Validators.required],
             genre: ['', Validators.required],
             releaseDate: ['', Validators.required],
             duration: ['', Validators.required],
             songPath: ['', Validators.required],
+        });
+        this.artistList$ = this.store.select(selectAllArtists);
+        this.albums$ = this.createForm.get('name')!.valueChanges.pipe(
+            switchMap((artist) => {
+                if (artist) {
+                    return this.store.select(selectAllAlbums(artist.name));
+                }
+                return of([]);
+            }),
+        );
+    }
+
+    ngOnInit() {
+        this.artistList$.subscribe((artists) => {
+            console.log('Lista de artistas:', artists);
         });
     }
 
@@ -62,8 +65,9 @@ export class CreateSongComponent {
                 releaseDate,
                 duration,
                 songPath,
-            } = this.createForm.value;
-            const artistName = createdSong.nameArtist.toString();
+            } = createdSong;
+
+            const artistName = createdSong.name.name.toString();
             const albumTitle = createdSong.album.title.toString();
             const song: Song = {
                 title,

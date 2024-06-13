@@ -16,7 +16,6 @@ export class CardArtistComponent {
     constructor(private readonly store: Store<AppState>){
     }
     selectArtist() {
-        console.log(this.nameArtist);
         if(this.nameArtist){
             this.store.dispatch(setCurrentArtist({artistName: this.nameArtist}));
         }

@@ -3,6 +3,10 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { AlbumService } from 'src/app/core/services/album/album.service';
 import { CreateModalComponent } from '../create-modal/create-modal.component';
+import { Album } from 'src/app/model/album';
+import { addAlbum } from 'src/app/ngrx/app.action';
+import { AppState } from 'src/app/model/appstate.model';
+import { Store } from '@ngrx/store';
 
 @Component({
     selector: 'app-create-album',
@@ -35,20 +39,31 @@ export class CreateAlbumComponent {
         private fb: FormBuilder,
         public dialogRef: MatDialogRef<CreateModalComponent>,
         private albumService: AlbumService,
+        private store: Store<AppState>,
     ) {
         this.createForm = this.fb.group({
             artistName: ['', Validators.required],
-            albumTitle: ['', Validators.required],
-            albumGenre: ['', Validators.required],
-            yearAlbum: ['', Validators.required],
-            albumImage: ['', Validators.required],
+            title: ['', Validators.required],
+            genre: ['', Validators.required],
+            releaseYear: ['', Validators.required],
+            imagePath: ['', Validators.required],
         });
     }
 
     onSubmit() {
         if (this.createForm.valid) {
             const createdAlbum = this.createForm.value;
-            this.albumService.create(createdAlbum);
+            const { artistName, title, genre, releaseYear, imagePath } =
+                createdAlbum;
+            const album: Album = {
+                title,
+                genre,
+                releaseYear: new Date(releaseYear),
+                imagePath,
+                songs: [],
+            };
+            this.albumService.create(album);
+            this.store.dispatch(addAlbum({ artistName, album }));
             this.dialogRef.close();
         }
     }

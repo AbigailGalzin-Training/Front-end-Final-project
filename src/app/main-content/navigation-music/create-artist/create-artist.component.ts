@@ -36,13 +36,12 @@ export class CreateArtistComponent {
     onSubmit() {
         if (this.createForm.valid) {
             const createdartist = this.createForm.value;
-            this.artistService.create(createdartist);
-            this.dialogRef.close();
             const artist: Artist = {
                 ...createdartist,
             };
             this.store.dispatch(addArtist({ artist }));
-            createdartist.reset();
+            this.artistService.create(artist);
+            this.dialogRef.close();     
         }
     }
 

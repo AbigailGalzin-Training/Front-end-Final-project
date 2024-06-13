@@ -20,24 +20,6 @@ export class CreateSongComponent {
     title!: string;
     artistList$!: Observable<any[]>;
     albums$!: Observable<any[]>;
-    /*
-    albums: any[] = [
-        {
-            title: 'OK Computer',
-            genre: 'Alternative',
-            releaseYear: new Date('1997-05-21'),
-            imagePath:
-                'https://i.discogs.com/F_KSyKjGi2YN5SBttMhdgP2zyNdmHv7HHWvDVGj3Shg/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ5NTA3/OTgtMTM4ODYyMzYx/MS0yMzYyLmpwZWc.jpeg',
-        },
-        {
-            title: 'In Rainbows',
-            genre: 'Alternative',
-            releaseYear: new Date('2007-10-10'),
-            imagePath:
-                'https://i.discogs.com/7y0jjFTZp88uBO380fsYcO36I3ex_er3lZn8COq90Vc/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTExNzQy/OTYtMTY5NzMyNzQ3/Ny0yMzQ1LmpwZWc.jpeg',
-        },
-    ];
-    */
 
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: any,
@@ -57,12 +39,12 @@ export class CreateSongComponent {
         });
         this.artistList$ = this.store.select(selectAllArtists);
         this.albums$ = this.createForm.get('name')!.valueChanges.pipe(
-            switchMap(artistName => {
-                if (artistName) {
-                    return this.store.select(selectAllAlbums(artistName));
+            switchMap((artist) => {
+                if (artist) {
+                    return this.store.select(selectAllAlbums(artist.name));
                 }
-                return of([]); 
-            })
+                return of([]);
+            }),
         );
     }
 
@@ -83,8 +65,9 @@ export class CreateSongComponent {
                 releaseDate,
                 duration,
                 songPath,
-            } = this.createForm.value;
-            const artistName = createdSong.nameArtist.toString();
+            } = createdSong;
+
+            const artistName = createdSong.name.name.toString();
             const albumTitle = createdSong.album.title.toString();
             const song: Song = {
                 title,

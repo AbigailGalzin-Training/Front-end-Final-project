@@ -84,8 +84,8 @@ export class HeaderMusicComponent {
         }
     }
 
-    nextSong(): void {
-        if (this.shuffleActive) {
+    nextSong(): void {        
+        if(!this.shuffleActive) {
             this.currentSongOut = this.actionButtonService.nextSong();
         } else {
             this.currentSongOut = this.actionButtonService.randomSong();
@@ -96,9 +96,9 @@ export class HeaderMusicComponent {
 
     previousSong(): void {
         const time = this.songService.getCurrenTime();
-
-        if (!(time <= 10)) {
-            if (this.shuffleActive) {
+        
+        if (!(time <= 10)) {            
+            if(!this.shuffleActive) {
                 this.currentSongOut = this.actionButtonService.previousSong();
             } else {
                 this.currentSongOut = this.actionButtonService.randomSong();

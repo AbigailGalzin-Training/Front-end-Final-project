@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { selectAllSongs, selectCurrentSong } from 'src/app/ngrx/app.selector';
 import { addCurrentSong } from 'src/app/ngrx/app.action';
 import { CurrentSong } from 'src/app/model/current-song.model';
+import { SongService } from 'src/app/core/services/song/song.service';
 
 @Component({
     selector: 'app-album-card',
@@ -22,7 +23,9 @@ export class AlbumCardComponent {
 
     currentSong: Observable<CurrentSong>;
 
-    constructor(private readonly store: Store<AppState>) {
+    constructor(private readonly store: Store<AppState>,
+        private songService: SongService
+    ) {
         this.currentSong = this.store.select(selectCurrentSong);
     }
     onClick(currentSong: Song) {
@@ -33,5 +36,7 @@ export class AlbumCardComponent {
                 song: currentSong,
             }),
         );
+
+        this.songService.saveCurrentSong(currentSong);
     }
 }

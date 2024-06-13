@@ -2,9 +2,12 @@ import { Component } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { CurrentSong } from '../../model/current-song.model'
 import { AppState } from 'src/app/model/appstate.model';
-import { selectCurrentSongs } from 'src/app/ngrx/app.selector';
 import { Subject } from 'rxjs';
 import { SongService } from '../../core/services/song/song.service'
+import { Song } from 'src/app/model/song.model';
+import { selectCurrentSongs } from 'src/app/ngrx/app.selector';
+import { ActionButtonService } from '../../core/services/actions-buttons/action-buttons.service';
+
 @Component({
     selector: 'app-header-music',
     templateUrl: './header-music.component.html',
@@ -18,7 +21,13 @@ export class HeaderMusicComponent {
     currentSong!: CurrentSong;
     private currentSongSubject = new Subject<CurrentSong>();
 
-    constructor(private readonly store: Store<AppState>) {
+    currentSongOut!: Song;
+
+    constructor(
+        private readonly store: Store<AppState>,
+        private actionButtonService: ActionButtonService
+
+    ) {
         this.store.select(selectCurrentSongs)
             .subscribe((currentSong) => {
                 this.currentSong = currentSong;
@@ -28,6 +37,13 @@ export class HeaderMusicComponent {
         this.currentSongSubject.subscribe(() => {
             this.onCurrentSongChange();
         });
+
+        this.chargeAllData();
+    }
+
+    chargeAllData() {
+        this.currentSongOut = this.actionButtonService.chargeAllData();
+        this.updateLocalSong();
     }
 
     private onCurrentSongChange() {
@@ -35,6 +51,7 @@ export class HeaderMusicComponent {
         this.audio.currentTime = 0;
 
     }
+
     ngOnInit() {
         this.audio.addEventListener('timeupdate', () => {
             this.songService.saveCurrentTimeSong(this.audio.currentTime);
@@ -42,8 +59,7 @@ export class HeaderMusicComponent {
 
         this.audio.ondurationchange = () => {
             this.audio.duration
-        }
-
+        }        
     }
 
     playSong(): void {
@@ -57,12 +73,28 @@ export class HeaderMusicComponent {
         }
     }
 
-    nextSong(): void {
-        console.log("-- next song")
+    nextSong(): void {        
+        if(this.shuffleActive) {
+            this.currentSongOut = this.actionButtonService.nextSong();
+        } else {
+            this.currentSongOut = this.actionButtonService.randomSong();
+        }
+        
+        this.updateLocalSong();
     }
 
-    prevSong(): void {
-        console.log("-- prev song")
+    previousSong(): void {
+        const time = this.songService.getCurrenTime();
+        
+        if (!(time <= 10)) {            
+            if(this.shuffleActive) {
+                this.currentSongOut = this.actionButtonService.previousSong();
+            } else {
+                this.currentSongOut = this.actionButtonService.randomSong();
+            }
+        }
+
+        this.updateLocalSong();
     }
 
     volumeSlider(event: any) {
@@ -71,6 +103,19 @@ export class HeaderMusicComponent {
 
     randomSong() {
         this.shuffleActive = !this.shuffleActive;
+        this.currentSongOut = this.actionButtonService.randomSong();
+        this.updateLocalSong();
+    }
+
+    private updateLocalSong() {
+        const currentAlbum = this.actionButtonService.getCurrentAlbum();
+        const artistName = this.actionButtonService.getCurrentArtist();
+        this.currentSong = {
+            song: this.currentSongOut,
+            albumName: currentAlbum.title,
+            artistName: artistName.name
+        };
+        this.audio.src = this.currentSong.song.songPath;
     }
 
     durationSlider(event: any) {

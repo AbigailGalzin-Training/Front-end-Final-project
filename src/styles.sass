@@ -1,1 +1,36 @@
 /* You can add global styles to this file, and also import other style files */
+
+@import './themes/light_theme'
+@import './themes/dark_theme'
+
+body.light-theme
+  --primary-color: var(--primary-color-light)
+  --secondary-color: var(--secondary-color-light)
+  --tertiary-color: var(--tertiary-color-light)
+  --primary-text-color: var(--primary-text-color-light)
+  --secondary-text-color: var(--secondary-text-color-light)
+  --tertiary-text-color: var(--tertiary-text-color-light)
+
+body.dark-theme
+  --primary-color: var(--primary-color-dark)
+  --secondary-color: var(--secondary-color-dark)
+  --tertiary-color: var(--tertiary-color-dark)
+  --primary-text-color: var(--primary-text-color-dark)
+  --secondary-text-color: var(--secondary-text-color-dark)
+  --tertiary-text-color: var(--tertiary-text-color-dark)
+    
+body
+    background-color: var(--secondary-color)
+    color: var(--secondary-text-color)
+
+.mat-mdc-menu-content
+    padding: 0px 0px !important
+
+.mat-mdc-menu-item.mdc-list-item
+    background-color: var(--primary-color) 
+
+.mat-mdc-menu-item.mdc-list-item:hover
+    background-color: var(--tertiary-color) 
+
+.mdc-list-item__primary-text
+    color: var(--primary-text-color)

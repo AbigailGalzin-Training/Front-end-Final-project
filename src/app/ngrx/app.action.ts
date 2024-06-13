@@ -23,7 +23,10 @@ export const addSong = createAction(
     '[Song] Add Song',
     props<{ artistName: string; albumTitle: string; song: Song }>(),
 );
-
+export const updateState = createAction(
+    '[App] Update State',
+    props<{ newState: AppState }>(),
+);
 export const addCurrentSong = createAction(
     '[CurrentSong] Add Current Song',
     props<{ artistName: string; albumTitle: string; song: Song }>(),

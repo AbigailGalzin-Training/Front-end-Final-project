@@ -1,6 +1,11 @@
 import { createReducer, on } from '@ngrx/store';
 import { AppState } from '../model/appstate.model';
-import { addArtist, addInitialData } from './app.action';
+import {
+    addArtistSuccess,
+    addAlbumSuccess,
+    addSongSuccess,
+    addInitialData,
+} from './app.action';
 
 export const initialState: AppState = {
     artists: [
@@ -14,7 +19,8 @@ export const initialState: AppState = {
                 'Will Champion',
             ],
             webSite: 'https://www.coldplay.com',
-            imagePath: 'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3-ap-south-1.amazonaws.com/wynk-music-cms/music/artists/profile/Taylor-Swift-fotor-jpg.jpg',
+            imagePath:
+                'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3-ap-south-1.amazonaws.com/wynk-music-cms/music/artists/profile/Taylor-Swift-fotor-jpg.jpg',
             albums: [
                 {
                     title: 'Parachutes',
@@ -69,7 +75,8 @@ export const initialState: AppState = {
             genre: ['Soul', 'Pop', 'R&B'],
             members: ['Adele Laurie Blue Adkins'],
             webSite: 'https://www.adele.com',
-            imagePath: 'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1667189514105-Maroon-wa_24c89811.jpeg',
+            imagePath:
+                'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1667189514105-Maroon-wa_24c89811.jpeg',
             albums: [
                 {
                     title: '19',
@@ -133,7 +140,8 @@ export const initialState: AppState = {
                 'Rami Jaffee',
             ],
             webSite: 'https://www.foofighters.com',
-            imagePath: 'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1663268125697-WhatsApp_Image_2022-09-15_at_9.17.40_PM_(2).jpeg',
+            imagePath:
+                'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1663268125697-WhatsApp_Image_2022-09-15_at_9.17.40_PM_(2).jpeg',
             albums: [
                 {
                     title: 'The Colour and the Shape',
@@ -188,7 +196,8 @@ export const initialState: AppState = {
             members: ['Beyoncé Giselle Knowles-Carter'],
             webSite: 'https://www.beyonce.com',
             // imagePath: 'https://example.com/beyonce.jpg',
-            imagePath: 'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1666955170588-Ariana-Grande-wa_59e11327.jpeg',
+            imagePath:
+                'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1666955170588-Ariana-Grande-wa_59e11327.jpeg',
             albums: [
                 {
                     title: 'Dangerously in Love',
@@ -248,7 +257,8 @@ export const initialState: AppState = {
                 'Philip Selway',
             ],
             webSite: 'https://www.radiohead.com',
-            imagePath: 'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1672929736271-Selena_Gomez.jpg',
+            imagePath:
+                'https://img.wynk.in/unsafe/248x248/filters:no_upscale():strip_exif():format(webp)/http://s3.ap-south-1.amazonaws.com/discovery-prod-zion/zion/1672929736271-Selena_Gomez.jpg',
             albums: [
                 {
                     title: 'OK Computer',
@@ -306,4 +316,32 @@ export const appReducer = createReducer(
     on(addInitialData, (state, { data }) => ({
         ...data,
     })),
+    on(addArtistSuccess, (state, { artist }) => ({
+        ...state,
+        artists: [...state.artists, artist],
+    })),
+
+    on(addAlbumSuccess, (state, { artistName, album }) => {
+        const updatedArtists = state.artists.map(artist =>
+            artist.name === artistName
+                ? { ...artist, albums: [...artist.albums, album] }
+                : artist
+        );
+        return { ...state, artists: updatedArtists };
+    }),
+    on(addSongSuccess, (state, { artistName, albumTitle, song }) => {
+        const updatedArtists = state.artists.map(artist =>
+            artist.name === artistName
+                ? {
+                    ...artist,
+                    albums: artist.albums.map(album =>
+                        album.title === albumTitle
+                            ? { ...album, songs: [...album.songs, song] }
+                            : album
+                    )
+                }
+                : artist
+        );
+        return { ...state, artists: updatedArtists };
+    })
 );

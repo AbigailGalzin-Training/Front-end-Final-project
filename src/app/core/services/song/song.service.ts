@@ -23,4 +23,10 @@ export class SongService {
         storedData.push(data);
         localStorage.setItem('CurrentTimeSong', JSON.stringify(storedData));
     }
+
+    getCurrenTime() {
+        return JSON.parse(
+            localStorage.getItem('CurrentTimeSong')!
+        )[0];
+    }
 }

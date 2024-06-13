@@ -2,7 +2,7 @@
 
     <div class="music-control">
         <mat-toolbar class="music-buttons">
-            <button mat-icon-button (click)="prevSong()">
+            <button mat-icon-button (click)="previousSong()">
                 <mat-icon>skip_previous</mat-icon>
             </button>
             <button mat-icon-button (click)="playSong()">
@@ -27,8 +27,8 @@
 
         <div class="media-section">
             <div class="media-info">
-                <h5>{{ currentSong.song.genre }}</h5>
-                <h5>{{ currentSong.song.title }} - {{ currentSong.song.duration }}</h5>
+                <h5>{{ currentSong.song.title }}</h5>
+                <h5>{{ currentSong.song.genre }} - {{ currentSong.song.duration }}</h5>
             </div>
 
             <mat-toolbar>

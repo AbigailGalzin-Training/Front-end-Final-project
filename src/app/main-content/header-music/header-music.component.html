@@ -1,4 +1,46 @@
 <div class="header-music">
-    <app-music-control></app-music-control>
-    <app-music-displayer></app-music-displayer>
+
+    <div class="music-control">
+        <mat-toolbar class="music-buttons">
+            <button mat-icon-button (click)="prevSong()">
+                <mat-icon>skip_previous</mat-icon>
+            </button>
+            <button mat-icon-button (click)="playSong()">
+                <mat-icon>{{ audio.paused ? "play_arrow" : "pause" }}</mat-icon>
+            </button>
+            <button mat-icon-button (click)="nextSong()">
+                <mat-icon>skip_next</mat-icon>
+            </button>
+            <button mat-icon-button>
+                <mat-icon>volume_up</mat-icon>
+            </button>
+            <mat-slider>
+                <input matSliderThumb value="50" (input)="volumeSlider($event)" />
+            </mat-slider>
+        </mat-toolbar>
+    </div>
+
+    <div class="music-displayer">
+        <div class="media-image">
+            <img class="artist-photo" [src]="currentSong.song.imagePath" alt="artist photo" />
+        </div>
+
+        <div class="media-section">
+            <div class="media-info">
+                <h5>{{ currentSong.song.genre }}</h5>
+                <h5>{{ currentSong.song.title }} - {{ currentSong.song.duration }}</h5>
+            </div>
+
+            <mat-toolbar>
+                <mat-slider class="slider-full" min="1" max="{{audio.duration}}">
+                    <input matSliderThumb 
+                        value="{{ audio.readyState === 0 ? 0 : audio.currentTime }}" (input)="durationSlider($event)" />
+                </mat-slider>
+                <button mat-icon-button (click)="randomSong()">
+                    <mat-icon [ngClass]="{ 'active': shuffleActive, 'inactive': !shuffleActive }">shuffle</mat-icon>
+                </button>
+            </mat-toolbar>
+        </div>
+    </div>
+
 </div>

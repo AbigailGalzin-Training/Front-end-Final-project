@@ -40,6 +40,7 @@ export class CreateArtistComponent {
                 ...createdartist,
             };
             this.store.dispatch(addArtist({ artist }));
+            alert(`Artist ${createdartist.name} was successfully created.`);
             this.artistService.create(artist);
             this.dialogRef.close();
         }

@@ -8,8 +8,8 @@ import { LocalStorageSyncService } from './core/services/artist/local-storage-sy
 })
 export class AppComponent implements OnInit {
     constructor(private localStorageSyncService: LocalStorageSyncService) {}
-  
+
     ngOnInit(): void {
-      // Service is initialized and will start listening to localStorage changes
+        // Service is initialized and will start listening to localStorage changes
     }
-  }
+}

@@ -4,14 +4,14 @@ import { Song } from 'src/app/model/song.model';
 import { Moment } from 'moment';
 import { AppState } from 'src/app/model/appstate.model';
 import { Store } from '@ngrx/store';
-import { selectAllAlbums,
-	selectAllArtists,
-	selectAllSongs
+import {
+    selectAllAlbums,
+    selectAllArtists,
+    selectAllSongs,
 } from '../../../ngrx/app.selector';
 import { Artist } from 'src/app/models/artist.model';
 import { Album } from 'src/app/model/album';
 import { CurrentSong } from 'src/app/model/current-song.model';
-
 
 @Component({
     selector: 'app-music-control',
@@ -24,9 +24,9 @@ export class MusicControlComponent {
 
     currentSongCS!: CurrentSong;
 
-    allArtist!: Artist[];
-    albumsByArtist!: Album[];
-    songsByAlbum!: Song[];
+    allArtist: Artist[] = [];
+    albumsByArtist: Album[] = [];
+    songsByAlbum: Song[] = [];
 
     currentSongIndex: number = 0;
     currentAlbumIndex: number = 0;
@@ -43,8 +43,11 @@ export class MusicControlComponent {
             const totalSeconds = Math.floor(this.audio.duration),
                 duration = moment.duration(totalSeconds, 'seconds');
             this.duration = totalSeconds;
-        };        
+        };
+        this.chargeAllData();
+    }
 
+    chargeAllData() {
         this.getAllArtist();
         this.getAlbumsByArtist(this.currentArtistIndex);
         this.getSongsByAlbum(this.currentAlbumIndex);
@@ -64,7 +67,6 @@ export class MusicControlComponent {
     }
 
     nextSong(): void {
-        console.log('-- next song');
         this.currentSongIndex++;
 
         if (this.currentSongIndex == this.songsByAlbum.length) {
@@ -81,39 +83,28 @@ export class MusicControlComponent {
             }
         }
 
-        this.getAlbumsByArtist(this.currentArtistIndex);
-        this.getSongsByAlbum(this.currentAlbumIndex);
-        this.updateCurrentSong();
+        this.chargeAllData();
     }
-    
-    backSong(): void {
-        console.log('-- back song');
+
+    previousSong(): void {
         this.currentSongIndex--;
 
         if (this.currentSongIndex < 0) {
-            this.currentAlbumIndex -- ;
+            this.currentAlbumIndex--;
             if (this.currentAlbumIndex < 0) {
-                this.currentArtistIndex --;
-                
-                if (this.currentArtistIndex < 0){
-                    this.currentArtistIndex = this.allArtist.length - 1;                    
+                this.currentArtistIndex--;
+
+                if (this.currentArtistIndex < 0) {
+                    this.currentArtistIndex = this.allArtist.length - 1;
                 }
                 this.getAlbumsByArtist(this.currentArtistIndex);
                 this.currentAlbumIndex = this.albumsByArtist.length - 1;
-                
             }
             this.getSongsByAlbum(this.currentAlbumIndex);
             this.currentSongIndex = this.albumsByArtist.length - 1;
         }
         this.updateCurrentSong();
     }
-
-    private updateCurrentSong() {
-        if (this.songsByAlbum.length > 0){
-            this.currentSong = this.songsByAlbum[this.currentSongIndex];
-        }
-        console.log(this.currentSong);
-    }   
 
     volumeSlider(event: any) {
         this.audio.volume = event.target.value / 100;
@@ -126,46 +117,75 @@ export class MusicControlComponent {
     }
 
     getAlbumsByArtist(indexArtist: number) {
-        this.currentArtist = this.allArtist[indexArtist];
-        
-        this.store.select(selectAllAlbums(this.currentArtist.name))
+        if (
+            this.allArtist.length > 0 &&
+            (indexArtist >= 0 &&
+            indexArtist < this.allArtist.length)
+        ) {
+            this.currentArtist = this.allArtist[indexArtist];
+        } else {
+            return;
+        }
+
+        this.store
+            .select(selectAllAlbums(this.currentArtist.name))
             .subscribe((albums: any) => {
                 this.albumsByArtist = albums;
-            }
-        );
+            });
     }
 
     getSongsByAlbum(indexAlbum: number) {
-        this.currentAlbum = this.albumsByArtist[indexAlbum];        
+        if (
+            this.albumsByArtist.length > 0 &&
+            (indexAlbum >= 0 &&
+            indexAlbum < this.allArtist.length)
+        ) {
+            this.currentAlbum = this.albumsByArtist[indexAlbum];
+        } else {
+            return;
+        }
 
         this.store
-            .select(selectAllSongs(
-                this.currentArtist.name,
-                this.currentAlbum.title
-            ))
+            .select(
+                selectAllSongs(
+                    this.currentArtist.name,
+                    this.currentAlbum.title,
+                ),
+            )
             .subscribe((songs: any) => {
                 this.songsByAlbum = songs;
-            }
-        );
+            });
     }
 
     randomSong() {
+        const currentSongIndex = this.currentSongIndex;
+
         let maxIndex = this.allArtist.length - 1;
         this.currentArtistIndex = Math.floor(Math.random() * maxIndex);
-        
+
         this.getAlbumsByArtist(this.currentArtistIndex);
         maxIndex = this.albumsByArtist.length - 1;
         this.currentAlbumIndex = Math.floor(Math.random() * maxIndex);
-        
+
         this.getSongsByAlbum(this.currentAlbumIndex);
         maxIndex = this.songsByAlbum.length - 1;
         this.currentSongIndex = Math.floor(Math.random() * maxIndex);
 
-        this.updateCurrentSong();
+        if (this.currentSongIndex == currentSongIndex) {
+            this.nextSong();
+        } else {
+            this.updateCurrentSong();
+        }
     }
 
-    getRandomInt(max: number) {
-        return Math.floor(Math.random() * max);
+    private updateCurrentSong() {
+        if (
+            this.songsByAlbum.length > 0 &&
+            (this.currentSongIndex >= 0 &&
+            this.currentSongIndex < this.songsByAlbum.length)
+        ) {
+            this.currentSong = this.songsByAlbum[this.currentSongIndex];
+        }
+        console.log(this.currentSong);
     }
-      
 }

@@ -25,11 +25,11 @@ export class CreateArtistComponent {
         private store: Store<AppState>,
     ) {
         this.createForm = this.fb.group({
-            artistName: ['', Validators.required],
-            musicGenres: ['', Validators.required],
-            integrants: ['', Validators.required],
-            website: ['', Validators.required],
-            image: ['', Validators.required],
+            name: ['', Validators.required],
+            genre: ['', Validators.required],
+            members: ['', Validators.required],
+            webSite: ['', Validators.required],
+            imagePath: ['', Validators.required],
         });
     }
 
@@ -40,8 +40,9 @@ export class CreateArtistComponent {
                 ...createdartist,
             };
             this.store.dispatch(addArtist({ artist }));
+            alert(`Artist ${createdartist.name} was successfully created.`);
             this.artistService.create(artist);
-            this.dialogRef.close();     
+            this.dialogRef.close();
         }
     }
 

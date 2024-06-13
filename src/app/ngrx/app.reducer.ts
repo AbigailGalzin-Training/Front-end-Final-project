@@ -1,6 +1,13 @@
 import { createReducer, on } from '@ngrx/store';
 import { AppState } from '../model/appstate.model';
-import { addCurrentSong, addInitialData, setCurrentArtist } from './app.action';
+import {
+    addCurrentSong,
+    addInitialData,
+    setCurrentArtist,
+    addArtist,
+    addAlbum,
+    addSong,
+} from './app.action';
 
 export const initialState: AppState = {
     currentArtist: '',
@@ -342,6 +349,37 @@ export const appReducer = createReducer(
     on(addInitialData, (state, { data }) => ({
         ...data,
     })),
+
+    on(addArtist, (state, { artist }) => ({
+        ...state,
+        artists: [...state.artists, artist],
+    })),
+
+    on(addAlbum, (state, { artistName, album }) => ({
+        ...state,
+        artists: state.artists.map((artist) =>
+            artist.name === artistName
+                ? { ...artist, albums: [...artist.albums, album] }
+                : artist,
+        ),
+    })),
+
+    on(addSong, (state, { artistName, albumTitle, song }) => ({
+        ...state,
+        artists: state.artists.map((artist) =>
+            artist.name === artistName
+                ? {
+                      ...artist,
+                      albums: artist.albums.map((album) =>
+                          album.title === albumTitle
+                              ? { ...album, songs: [...album.songs, song] }
+                              : album,
+                      ),
+                  }
+                : artist,
+        ),
+    })),
+
     on(addCurrentSong, (state, { artistName, albumTitle, song }) => ({
         ...state,
         currentSong: {
@@ -350,6 +388,7 @@ export const appReducer = createReducer(
             song: song,
         },
     })),
+
     on(setCurrentArtist, (state, { artistName }) => {
         return {
             ...state,

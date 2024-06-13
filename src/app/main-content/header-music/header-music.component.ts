@@ -38,7 +38,7 @@ export class HeaderMusicComponent {
         this.currentSongSubject.subscribe(() => {
             this.onCurrentSongChange();
         });
-        
+
         const song = this.songService.getCurrentSong();
         console.log(song);
         if (song) {
@@ -68,7 +68,9 @@ export class HeaderMusicComponent {
 
         this.audio.ondurationchange = () => {
             this.audio.duration
-        }        
+        }
+        this.audio.src = this.currentSong.song.songPath;
+        this.audio.currentTime = this.songService.getCurrenTime();
     }
 
     playSong(): void {
@@ -83,12 +85,12 @@ export class HeaderMusicComponent {
     }
 
     nextSong(): void {        
-        if(this.shuffleActive) {
+        if(!this.shuffleActive) {
             this.currentSongOut = this.actionButtonService.nextSong();
         } else {
             this.currentSongOut = this.actionButtonService.randomSong();
         }
-        
+
         this.updateLocalSong();
     }
 
@@ -96,7 +98,7 @@ export class HeaderMusicComponent {
         const time = this.songService.getCurrenTime();
         
         if (!(time <= 10)) {            
-            if(this.shuffleActive) {
+            if(!this.shuffleActive) {
                 this.currentSongOut = this.actionButtonService.previousSong();
             } else {
                 this.currentSongOut = this.actionButtonService.randomSong();

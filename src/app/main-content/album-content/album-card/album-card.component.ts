@@ -26,12 +26,12 @@ export class AlbumCardComponent {
     }
 
     mockedSong: Song = {
-        title: 'SAVED IN COMPONENT!',
-        genre: '',
-        releaseDate: '',
-        duration: 0,
-        songPath: '',
-        imagePath: '',
+        title: "Bohemian Rhapsody",
+        genre: "Rock",
+        releaseDate: "1975-10-31",
+        duration: 355,
+        songPath: "../../../../assets/bohemian_rhapsody.mp3",
+        imagePath: "../../../../assets/music.png"
     };
 
     onClick(currentSong: string) {

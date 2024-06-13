@@ -11,7 +11,9 @@ import {
     selectAllArtists,
     selectAllSongs,
     selectSong,
+    selectCurrentSongs
 } from '../app.selector';
+import { CurrentSong } from 'src/app/model/current-song.model';
 
 @Component({
     selector: 'app-ngrx',

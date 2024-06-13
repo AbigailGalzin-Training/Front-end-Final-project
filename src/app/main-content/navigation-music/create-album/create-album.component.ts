@@ -74,6 +74,7 @@ export class CreateAlbumComponent {
             };
             this.albumService.create(album); // SAVE IN THE STORAGE, BUT IN ANOTHER LIST
             this.store.dispatch(addAlbum({ artistName, album }));
+            alert(`Album ${createdAlbum.title} was successfully created.`);
             this.dialogRef.close();
         }
     }

@@ -74,6 +74,7 @@ export class CreateSongComponent {
             };
             this.songService.create(createdSong);
             this.store.dispatch(addSong({ artistName, albumTitle, song }));
+            alert(`Song ${createdSong.title} was successfully created.`);
             this.dialogRef.close();
         }
     }

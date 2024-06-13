@@ -2,6 +2,7 @@ import { AppState } from 'src/app/model/appstate.model';
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { Artist } from '../model/artist.model';
 import { Album } from '../model/album';
+import { CurrentSong } from '../model/current-song.model';
 
 export const selectAppState = createFeatureSelector<AppState>('appState');
 
@@ -44,6 +45,11 @@ export const selectSong = (
                 : undefined,
     );
 
+export const selectCurrentSongs =
+    createSelector(
+        selectAppState,
+        (state: AppState) => state.currentSong,
+    );
 export const selectAlbumsForCurrentArtist = createSelector(
     selectAppState,
     (state: AppState) => {

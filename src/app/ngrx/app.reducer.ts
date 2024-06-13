@@ -29,8 +29,7 @@ export const initialState: AppState = {
                     title: 'Parachutes',
                     genre: 'Rock',
                     releaseYear: new Date('2000-07-10'),
-                    imagePath:
-                        'https://i.discogs.com/qX8Ho7VAkk8gW-rKITdc4cGcfaEFR4ouGsQ-aCJ64og/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ4NDAz/MC0xMTY0NzQ3Nzg4/LmpwZWc.jpeg',
+                    imagePath: 'https:/i.discogs.com/qX8Ho7VAkk8gW-rKITdc4cGcfaEFR4ouGsQ-aCJ64og/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ4NDAz/MC0xMTY0NzQ3Nzg4/LmpwZWc.jpeg',
                     songs: [
                         {
                             title: 'Yellow',
@@ -90,8 +89,7 @@ export const initialState: AppState = {
                     title: '19',
                     genre: 'Soul',
                     releaseYear: new Date('2008-01-28'),
-                    imagePath:
-                        'https://i.discogs.com/O6yhGT7SMs1k1Aqke-enhPenpXc4e4p9Y3xvkbtLYG0/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyNjcw/NjAtMTY3NDE1Njg4/Ny0xMjc1LmpwZWc.jpeg',
+                    imagePath: 'https:/i.discogs.com/O6yhGT7SMs1k1Aqke-enhPenpXc4e4p9Y3xvkbtLYG0/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTEyNjcw/NjAtMTY3NDE1Njg4/Ny0xMjc1LmpwZWc.jpeg',
                     songs: [
                         {
                             title: 'Chasing Pavements',
@@ -117,8 +115,7 @@ export const initialState: AppState = {
                     title: '21',
                     genre: 'Pop',
                     releaseYear: new Date('2011-01-24'),
-                    imagePath:
-                        'https://i.discogs.com/pbgKc7liXRhTdGM1zNhToDidUDYjK7_CQsxNaXxQTtE/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI2NjQ1/ODktMTQ1MjI2OTk5/NS03Mjk4LnBuZw.jpeg',
+                    imagePath: 'https:/i.discogs.com/pbgKc7liXRhTdGM1zNhToDidUDYjK7_CQsxNaXxQTtE/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI2NjQ1/ODktMTQ1MjI2OTk5/NS03Mjk4LnBuZw.jpeg',
                     songs: [
                         {
                             title: 'Rolling in the Deep',
@@ -186,8 +183,7 @@ export const initialState: AppState = {
                     title: 'Wasting Light',
                     genre: 'Rock',
                     releaseYear: new Date('2011-04-12'),
-                    imagePath:
-                        'https://i.discogs.com/mxA3UE0y8M5vMFnhg9kdl_rwsxtAdtyn9flxP4umecg/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI4MTc0/MjMtMTMwNDYzNTY1/Mi5qcGVn.jpeg',
+                    imagePath: 'https:/i.discogs.com/mxA3UE0y8M5vMFnhg9kdl_rwsxtAdtyn9flxP4umecg/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTI4MTc0/MjMtMTMwNDYzNTY1/Mi5qcGVn.jpeg',
                     songs: [
                         {
                             title: 'Rope',
@@ -221,8 +217,7 @@ export const initialState: AppState = {
                     title: 'Dangerously in Love',
                     genre: 'R&B',
                     releaseYear: new Date('2003-06-20'),
-                    imagePath:
-                        'https://i.discogs.com/92bAvb9f_llRmgThaztmo0cwCumjqXur4kbZzFNzs-0/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMwMTcw/OS0xMjY4OTMxMzY4/LmpwZWc.jpeg',
+                    imagePath: 'https:/i.discogs.com/92bAvb9f_llRmgThaztmo0cwCumjqXur4kbZzFNzs-0/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTMwMTcw/OS0xMjY4OTMxMzY4/LmpwZWc.jpeg',
                     songs: [
                         {
                             title: 'Crazy in Love',
@@ -247,8 +242,7 @@ export const initialState: AppState = {
                     title: 'Lemonade',
                     genre: 'Pop',
                     releaseYear: new Date('2016-04-23'),
-                    imagePath:
-                        'https://i.discogs.com/ZKlVmncrWPj7inH8QlfToVET7Y3ZNRNV6x979KhFEUM/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTg0ODY3/MTQtMTQ3NzU3NTAx/MC02OTY5LmpwZWc.jpeg',
+                    imagePath: 'https:/i.discogs.com/ZKlVmncrWPj7inH8QlfToVET7Y3ZNRNV6x979KhFEUM/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTg0ODY3/MTQtMTQ3NzU3NTAx/MC02OTY5LmpwZWc.jpeg',
                     songs: [
                         {
                             title: 'Formation',
@@ -288,8 +282,7 @@ export const initialState: AppState = {
                     title: 'OK Computer',
                     genre: 'Alternative',
                     releaseYear: new Date('1997-05-21'),
-                    imagePath:
-                        'https://i.discogs.com/F_KSyKjGi2YN5SBttMhdgP2zyNdmHv7HHWvDVGj3Shg/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ5NTA3/OTgtMTM4ODYyMzYx/MS0yMzYyLmpwZWc.jpeg',
+                    imagePath: 'https:/i.discogs.com/F_KSyKjGi2YN5SBttMhdgP2zyNdmHv7HHWvDVGj3Shg/rs:fit/g:sm/q:90/h:600/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTQ5NTA3/OTgtMTM4ODYyMzYx/MS0yMzYyLmpwZWc.jpeg',
                     songs: [
                         {
                             title: 'Paranoid Android',
@@ -315,8 +308,7 @@ export const initialState: AppState = {
                     title: 'In Rainbows',
                     genre: 'Alternative',
                     releaseYear: new Date('2007-10-10'),
-                    imagePath:
-                        'https://i.discogs.com/7y0jjFTZp88uBO380fsYcO36I3ex_er3lZn8COq90Vc/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTExNzQy/OTYtMTY5NzMyNzQ3/Ny0yMzQ1LmpwZWc.jpeg',
+                    imagePath: 'https:/i.discogs.com/7y0jjFTZp88uBO380fsYcO36I3ex_er3lZn8COq90Vc/rs:fit/g:sm/q:90/h:594/w:600/czM6Ly9kaXNjb2dz/LWRhdGFiYXNlLWlt/YWdlcy9SLTExNzQy/OTYtMTY5NzMyNzQ3/Ny0yMzQ1LmpwZWc.jpeg',
                     songs: [
                         {
                             title: '15 Step',

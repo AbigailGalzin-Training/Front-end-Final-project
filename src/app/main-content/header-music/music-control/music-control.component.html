@@ -14,4 +14,7 @@
     <mat-slider>
         <input matSliderThumb value="50" (input)="volumeSlider($event)" />
     </mat-slider>
+    <button mat-icon-button (click)="randomSong()">
+        <mat-icon [ngClass]="{ 'active': shuffleActive, 'inactive': !shuffleActive }">shuffle</mat-icon>
+    </button>
 </mat-toolbar>

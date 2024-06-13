@@ -36,6 +36,8 @@ export class MusicControlComponent {
     currentAlbum!: Album;
     currentArtist!: Artist;
 
+    shuffleActive: boolean = false;
+
     constructor(private readonly store: Store<AppState>) {
         this.audio.ondurationchange = () => {
             const totalSeconds = Math.floor(this.audio.duration),
@@ -109,7 +111,8 @@ export class MusicControlComponent {
     private updateCurrentSong() {
         if (this.songsByAlbum.length > 0){
             this.currentSong = this.songsByAlbum[this.currentSongIndex];
-        }        
+        }
+        console.log(this.currentSong);
     }   
 
     volumeSlider(event: any) {
@@ -145,4 +148,24 @@ export class MusicControlComponent {
             }
         );
     }
+
+    randomSong() {
+        let maxIndex = this.allArtist.length - 1;
+        this.currentArtistIndex = Math.floor(Math.random() * maxIndex);
+        
+        this.getAlbumsByArtist(this.currentArtistIndex);
+        maxIndex = this.albumsByArtist.length - 1;
+        this.currentAlbumIndex = Math.floor(Math.random() * maxIndex);
+        
+        this.getSongsByAlbum(this.currentAlbumIndex);
+        maxIndex = this.songsByAlbum.length - 1;
+        this.currentSongIndex = Math.floor(Math.random() * maxIndex);
+
+        this.updateCurrentSong();
+    }
+
+    getRandomInt(max: number) {
+        return Math.floor(Math.random() * max);
+    }
+      
 }

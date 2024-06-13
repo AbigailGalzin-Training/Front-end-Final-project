@@ -49,8 +49,8 @@ export const selectAlbumsForCurrentArtist = createSelector(
     (state: AppState) => {
         if (state.currentArtist === 'All Artists') {
             let albums: Album[] = [];
-            state.artists.forEach( artist => {
-                albums = [...albums,...artist.albums];
+            state.artists.forEach((artist) => {
+                albums = [...albums, ...artist.albums];
             });
             return albums;
         } else {
@@ -65,4 +65,9 @@ export const selectAlbumsForCurrentArtist = createSelector(
 export const selectCurrentArtist = createSelector(
     selectAppState,
     (state: AppState) => state.currentArtist,
+);
+
+export const selectCurrentSong = createSelector(
+    selectAppState,
+    (state: AppState) => state.currentSong,
 );

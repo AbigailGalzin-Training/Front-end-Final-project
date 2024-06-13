@@ -7,6 +7,7 @@ import { SongService } from '../../core/services/song/song.service'
 import { Song } from 'src/app/model/song.model';
 import { selectCurrentSongs } from 'src/app/ngrx/app.selector';
 import { ActionButtonService } from '../../core/services/actions-buttons/action-buttons.service';
+import { addCurrentSong } from 'src/app/ngrx/app.action';
 
 @Component({
     selector: 'app-header-music',
@@ -37,8 +38,16 @@ export class HeaderMusicComponent {
         this.currentSongSubject.subscribe(() => {
             this.onCurrentSongChange();
         });
-
-        this.chargeAllData();
+        
+        const song = this.songService.getCurrentSong();
+        console.log(song);
+        if (song) {
+            this.currentSongOut = song;
+            this.updateLocalSong();
+        } else {
+            this.chargeAllData();
+        }
+        //this.chargeAllData();
     }
 
     chargeAllData() {
@@ -116,6 +125,14 @@ export class HeaderMusicComponent {
             artistName: artistName.name
         };
         this.audio.src = this.currentSong.song.songPath;
+        this.store.dispatch(
+            addCurrentSong({
+                artistName: artistName.name,
+                albumTitle: currentAlbum.title,
+                song: this.currentSongOut,
+            }),
+        );
+        this.songService.saveCurrentSong(this.currentSongOut);
     }
 
     durationSlider(event: any) {

@@ -26,6 +26,15 @@ export class AlbumCardComponent {
         this.currentSong = this.store.select(selectCurrentSong);
     }
 
+    mockedSong: Song = {
+        title: "Bohemian Rhapsody",
+        genre: "Rock",
+        releaseDate: "1975-10-31",
+        duration: 355,
+        songPath: "../../../../assets/bohemian_rhapsody.mp3",
+        imagePath: "../../../../assets/music.png"
+    };
+
     onClick(currentSong: Song) {
         this.store.dispatch(
             addCurrentSong({

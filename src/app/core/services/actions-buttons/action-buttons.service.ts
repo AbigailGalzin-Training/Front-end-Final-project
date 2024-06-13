@@ -9,6 +9,7 @@ import {
     selectAllAlbums,
     selectAllSongs,
 } from 'src/app/ngrx/app.selector';
+import { CurrentSong } from 'src/app/model/current-song.model';
 
 @Injectable({
     providedIn: 'root',
@@ -161,6 +162,29 @@ export class ActionButtonService {
         }
 
         return this.currentSongOut;
+    }
+
+    updatesCurrentSong(currentSong : CurrentSong, song: Song){
+        this.getAllArtist();
+        this.store
+                .select(selectAllAlbums(currentSong.artistName))
+                .subscribe((albums: any) => {
+                    this.albumsByArtist = albums;
+                }
+            );
+
+        this.store
+            .select(
+                selectAllSongs(
+                    this.currentArtist.name,
+                    this.currentAlbum.title,
+                ),
+            )
+            .subscribe((songs: any) => {
+                this.songsByAlbum = songs;
+            });
+
+        this.currentSongOut = song;       
     }
 
     getCurrentAlbum(){

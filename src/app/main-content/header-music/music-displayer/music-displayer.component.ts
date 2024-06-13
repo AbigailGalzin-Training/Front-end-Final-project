@@ -34,7 +34,7 @@ export class MusicDisplayerComponent {
         let duration = this.audio.duration;
         console.log('Audio duration:', duration);
 
-        this.audio.play();
+        //this.audio.play();
 
         this.audio.addEventListener('loadedmetadata', () => {
             this.durationSong = Math.round(this.audio.duration);

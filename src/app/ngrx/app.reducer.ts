@@ -1,10 +1,10 @@
 import { createReducer, on } from '@ngrx/store';
 import { AppState } from '../model/appstate.model';
 import {
-    addArtistSuccess,
-    addAlbumSuccess,
-    addSongSuccess,
     addInitialData,
+    addArtist,
+    addAlbum,
+    addSong,
 } from './app.action';
 
 export const initialState: AppState = {
@@ -316,12 +316,13 @@ export const appReducer = createReducer(
     on(addInitialData, (state, { data }) => ({
         ...data,
     })),
-    on(addArtistSuccess, (state, { artist }) => ({
+    on(addArtist, (state, { artist }) => ({
         ...state,
         artists: [...state.artists, artist],
-    })),
+    })
+    ),
 
-    on(addAlbumSuccess, (state, { artistName, album }) => {
+    on(addAlbum, (state, { artistName, album }) => {
         const updatedArtists = state.artists.map(artist =>
             artist.name === artistName
                 ? { ...artist, albums: [...artist.albums, album] }
@@ -329,7 +330,7 @@ export const appReducer = createReducer(
         );
         return { ...state, artists: updatedArtists };
     }),
-    on(addSongSuccess, (state, { artistName, albumTitle, song }) => {
+    on(addSong, (state, { artistName, albumTitle, song }) => {
         const updatedArtists = state.artists.map(artist =>
             artist.name === artistName
                 ? {

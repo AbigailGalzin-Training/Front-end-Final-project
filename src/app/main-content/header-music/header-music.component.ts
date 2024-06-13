@@ -31,7 +31,9 @@ export class HeaderMusicComponent {
     }
 
     private onCurrentSongChange() {
+        this.audio.src = this.currentSong.song.songPath;
         this.audio.currentTime = 0;
+
     }
     ngOnInit() {
         this.audio.addEventListener('timeupdate', () => {

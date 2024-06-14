@@ -1,0 +1,14 @@
+<div class="aux">
+    <p class="artist-name">{{ currentArtist |async }}</p>
+    <div class="albums-container">
+        <app-album-card
+            *ngFor="let album of currentAlbums | async"
+            [title]="album.title"
+            [releaseDate]="album.releaseYear.toDateString()"
+            [genre]="album.genre"
+            [photo]="album.imagePath"
+            [songs]="album.songs"
+            [artistName]="(currentArtist|async)"
+        ></app-album-card>
+    </div>
+</div>

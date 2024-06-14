@@ -1,0 +1,16 @@
+<div class="album-container">
+    <div class="album-photo">
+        <img src="{{ photo }}" alt="artist photo" />
+    </div>
+    <div class="album-information">
+        <p class="album-title">{{ title }}</p>
+        <app-song-component
+            *ngFor="let song of songs"
+            [songName]="song.title"
+            [isCurrentSong]="currentSong|async"
+            (click)="onClick(song)"
+            ></app-song-component
+        >
+    </div>
+    <h2 class="album-release">{{ releaseDate }}</h2>
+</div>
